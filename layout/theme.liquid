@@ -18,7 +18,6 @@
   
   {% if template == "index" %}
     {{ 'instafeed.min.js' | asset_url | script_tag }}
-    {{ 'jquery.dotdotdot.min.js' | asset_url | script_tag }}
   {% endif %}
 
 
@@ -32,12 +31,6 @@
   <!-- this deals with the out of date version of cloud zoom plugin -->
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
   <!-- end -->
-
-  <script type="text/javascript">
-      $(document).ready(function() {
-    $("#instafeed").dotdotdot();
-    });
-</script>
 
   <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
   <meta charset="utf-8">
