@@ -1,0 +1,12 @@
+<div id="page" class="row">
+  
+  <div class="span12 details">
+    <h1 class="p25">{{ page.title }}</h1>
+    {% for tag in blogs['news'].all_tags %}
+     <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+    {% endfor %}
+    
+    {{ page.content }}
+  </div>
+  
+</div>

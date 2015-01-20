@@ -1,0 +1,125 @@
+<div id="cart">
+  
+  <!-- Begin empty cart -->
+  {% if cart.item_count == 0 %}
+  <div class="row">
+    <div class="span12 expanded-message">
+      <h2>Your cart is empty</h2>
+    </div>
+  </div>
+  <!-- End empty cart -->
+  
+  <!-- Begin cart -->
+  {% else %}
+  <div class="row">
+    <div class="span12">
+      <h1>Your cart</h1>
+
+  
+      
+      <form action="/cart" method="post" id="cartform">
+        <table>
+          <thead>
+            <tr>
+              <th class="image">&nbsp;</th>
+              <th class="item">&nbsp;</th>
+              <th class="var">Size</th>
+              <th class="qty">Quantity</th>
+              <th class="price">Price</th>
+              <th class="remove">&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart.items %}
+            <tr>
+              <td class="image">
+                <div class="product_image">
+                  <a href="{{ item.product.url }}">
+                    <img src="{{ item.product.featured_image | product_img_url: 'small' }}"  alt="{{ item.product.title }}" />
+                  </a>
+                </div>
+              </td>
+              <td class="item"><a href="{{item.product.url }}"><strong>{{ item.product.title }}</strong>{% if item.product.options.size > 1 %}<span class="variant_title">{{ item.variant.title }}</span>{% endif %}</a>
+                <div class="item-description">
+                  {{ item.product.description | strip_html | truncatewords: 10 }}
+                </div>
+              </td>
+              <td class="var">
+               {{ item.variant.title }}
+              </td>
+              <td class="qty">
+                <input type="text" size="4" name="updates[{{item.variant.id}}]" id="updates_{{item.variant.id}}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" />  
+              	<input type="submit" id="update-cart" class="btn2" name="update" value="Update" /> 
+              </td>
+               
+              
+              <td class="price">{{ item.line_price | money }}</td>
+              <td class="remove"><a class="cart" href="/cart/change?id={{ item.id }}&quantity=0">Remove</a></td>
+            </tr>
+            {% endfor %}
+            <tr class="summary">
+              <td class="image mob_fix">&nbsp;</td>
+              <td class="mob_fix">&nbsp;</td>
+              <td class="mob_fix">&nbsp;</td>
+              <td style="text-align:right"><h7>Sub total before delivery </h7></td>
+              <td class="price"><span class="total"><h7><strong>{{ cart.total_price | money }}</strong></h7></span></td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+             
+        <div class="buttons clearfix">
+          <input type="submit" id="checkout" class="btn4" name="checkout" value="Pay securely now" /> 
+          <div class="continue_shopping"><a class="btn" href="http://www.thewhitepepper.com/">Continue shopping</a>
+          </div>
+        </div>
+      </form>
+ 
+    </div>
+  </div>
+ <div>
+   
+  <div class="span12"> 
+   <div class="info_container delivery">
+     <h3>Delivery Options</h3>
+     <p>UK Standard Delivery £1.99</p>
+     <p>UK Next Day £9.99</p>
+     <p>EU Standard £3.99 / Express £9.99</p>
+     <p>Rest of the World Standard £6.99</p>
+     <p>Rest of the World Express £12.99</p>
+   </div>	<!-- .info_container -->
+   <div class="info_container free_delivery">
+     <p class="gap">&nbsp;</p>
+     <h3>Free Standard Delivery Worldwide</h3>
+     <p>ENTER CODE "COSY" AT CHECKOUT</p>
+   </div>	<!-- .info_container -->
+   <div class="info_container payment_methods">
+     <img src="{{ 'payment_methods.jpg' | asset_url }}">
+     <p>We accept Visa Credit, Visa Debit, Visa Electron, Master Card, American Express, Maestro, and Paypal</p>
+   </div>	<!-- .info_container -->
+   </div>	<!-- .span12 -->
+
+  </div>
+  {% if settings.display_extra_checkout_buttons or settings.display_cart_note %}
+  <div class="row">
+    {% if settings.display_extra_checkout_buttons %}
+    <div class="extra-checkout-buttons span6">
+      {% if additional_checkout_buttons %}
+      {{ content_for_additional_checkout_buttons }}
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if settings.display_cart_note %}
+    <div class="span6">
+      <div class="checkout-buttons clearfix">
+        <label for="note">Add special instructions for your order...</label>
+        <textarea id="note" name="note" rows="10" cols="50">{{ cart.note }}</textarea>
+      </div>
+    </div>
+    {% endif %}
+  </div> 
+  {% endif %}
+  {% endif %}
+  <!-- End cart -->
+  
+</div> 

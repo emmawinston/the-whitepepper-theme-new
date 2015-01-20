@@ -1,0 +1,73 @@
+<div id="search">
+  {% if search.performed %}
+  {% paginate search.results by settings.pagination_limit %}
+
+  {% if search.terms == "" %}
+  <div class="row">
+    <div class="span12 expanded-message">
+      <h2>Your search query was empty.</h2>
+      <span class="subtext">Please use the search box in the bottom right hand to search</span>
+    </div>
+  </div>
+  {% else %}
+  
+  {% if search.results == empty %}
+  <div class="row">
+    <div class="span12 expanded-message">
+      <h2>No search results</h2>
+      <span class="subtext">Your search for <strong>"{{search.terms | escape}}"</strong> did not yield any results. Try searching for something else.</span>
+    </div>
+  </div>
+  {% else %}
+  
+  <div class="row">
+    <div class="span12">
+      <h1>Search Results</h1>
+    </div>
+  </div>
+  
+  <!-- Begin results -->
+  {% for item in search.results %}
+  <div class="row results">
+    <div class="span1">
+      <div class="thumbnail">
+        {% if item.featured_image %}
+        	<a href="{{ item.url }}">{{ item.featured_image | product_img_url: 'small' | img_tag }}</a>
+        {% elsif item.content contains "<img" %}
+            {% assign src = item.content | split: 'src="' %}
+            {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn'; | replace: 'http:http://';, 'http://'; | replace: '_large';, ''; | replace: '.jpg';, '_small.jpg'; | remove: 'https:' %}
+        	<a href="{{ item.url }}">{{ src | img_tag }}</a>
+		{% else %} 
+        	<a href="{{ item.url }}">{{ 'http://cdn.shopify.com/s/files/1/0156/6472/t/30/assets/logo_small.png?31716' | img_tag }}</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="span11">
+      <div class="search-result">
+        <h3>{{ item.title | highlight: search.terms | link_to: item.url }}</h3>
+        {{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}
+      </div>
+    </div>
+    <hr class="divider" />
+  </div>
+  {% endfor %}
+  <!-- End results -->
+  
+  {% include 'collection_pagination' %}
+
+  {% endif %}
+  {% endif %}
+
+  {% endpaginate %}
+  
+  {% else %}
+
+  <div class="row">
+    <div class="span12 expanded-message">
+      <h2>Search our shop</h2>
+      <p>To search our store, please use the search field in the upper right corner.</p>
+    </div> <!-- /.span12 -->
+  </div> <!-- /.row -->
+
+  {% endif %}	
+</div> <!-- /#search -->

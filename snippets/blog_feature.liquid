@@ -1,0 +1,57 @@
+<div class="row" id="blog_feature">
+
+{% if settings.gif_blog_feature_1 %}
+<div class="span4 first view view-first">
+  <a href="{{ settings.gif_blog_feature_1_link }}" ><img src="{{ 'gif_blog_feature_1.gif' | asset_url }}" />
+    <div class="mask">
+      <h2>{{ settings.blog_feature_1_title }}</h2>
+    </div>
+  </a>
+</div>
+{% else %}
+<div class="span4 first view view-first">
+  <a href="{{ settings.blog_feature_1_link }}"><img src="{{ 'blog_feature_1.png' | asset_url }}"/>
+    <div class="mask">
+      <h2>{{ settings.blog_feature_1_title }}</h2>
+    </div>
+  </a>
+</div>
+{% endif %}
+  
+{% if settings.gif_blog_feature_2 %}
+<div class="span4 view view-first">
+  <a href="{{ settings.gif_blog_feature_2_link }}" ><img src="{{ 'gif_blog_feature_2.gif' | asset_url }}" />
+    <div class="mask">
+      <h2>{{ settings.blog_feature_2_title }}</h2>
+    </div>
+  </a>
+</div>
+{% else %}
+<div class="span4 view view-first">
+  <a href="{{ settings.blog_feature_2_link }}"><img src="{{ 'blog_feature_2.png' | asset_url }}"/>
+    <div class="mask">
+      <h2>{{ settings.blog_feature_2_title }}</h2>
+    </div>
+  </a>
+</div>
+{% endif %}
+  
+{% if settings.gif_blog_feature_3 %}
+<div class="span4 last view view-first">
+  <a href="{{ settings.gif_blog_feature_3_link }}" ><img src="{{ 'gif_blog_feature_3.gif' | asset_url }}" />
+    <div class="mask">
+      <h2>{{ settings.blog_feature_3_title }}</h2>
+    </div>
+  </a>
+</div>
+{% else %}
+<div class="span4 last view view-first">
+  <a href="{{ settings.blog_feature_3_link }}"><img src="{{ 'blog_feature_3.png' | asset_url }}"/>
+    <div class="mask">
+      <h2>{{ settings.blog_feature_3_title }}</h2>
+    </div>
+  </a>
+</div>
+{% endif %}
+  
+</div> <!-- #feature_section_1 -->

@@ -1,0 +1,78 @@
+<script type="text/javascript" charset="utf-8">
+  // This code is for example purpose, adapt it to your theme
+  // It must be placed in the product.liquid because it needs liquid code
+
+  // <![CDATA[  
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      jQuery('#purchase').removeClass('disabled').removeAttr('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+      jQuery('.current-price').html(Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}"));  // update price field
+    } else {
+      // variant doesn't exist
+      jQuery('#purchase').addClass('disabled').attr('disabled', 'disabled');      // set add-to-cart button to unavailable class and disable button
+      sold_out = {% assign value = "sold-out" %}"{% include 'translations' with value %}";
+      unavailable = {% assign value = "unavailable" %}"{% include 'translations' with value %}";
+  	{% assign value = null %}
+  	var message = variant ? sold_out : unavailable;
+  	$(".current-price").text(message);
+    }
+  };
+
+  $(function() {
+  	myJSONProduct = {{ product | json }};
+
+  	{% if cart.attributes.locale != null %}
+  	  // start variant text translation
+      {% for item in product.variants %}
+  		$.each( myJSONProduct.variants, function(i, l){
+  			if( myJSONProduct.variants[i].id == {{ item.id }}){
+  	    		{% for o in item.options %}
+  		    		{% capture variant %}option{{forloop.index}}{%endcapture%}
+  			    	var text = '{{ item.metafields[cart.attributes["locale"]].[variant] }}';
+  				   	myJSONProduct.variants[i].option{{forloop.index}} = text;
+  					myJSONProduct.variants[i].options[{{forloop.index0}}] = text;
+  				{% endfor %}
+  			}
+  		});
+  		{% endfor %}
+  		// end variant text translation
+
+      // start product option label translation
+  		{% for option in product.options %}
+  			{% capture option_iteration %}option{{forloop.index}}{%endcapture%}
+  			var text = '{{ product.metafields[cart.attributes["locale"]].[option_iteration] }}';
+  			myJSONProduct.options[{{forloop.index0}}] = text;
+  		{% endfor %}
+  		// end product option label translation
+      {% endif %}
+  });
+
+
+  // initialize multi selector for product      
+  jQuery(document).ready(function() {
+
+    // myJSONProduct is loaded inside Shopify.OptionSelectors
+    new Shopify.OptionSelectors("product-select", { product: myJSONProduct, onVariantSelected: selectCallback });
+    
+     {% assign found_one_in_stock = false %}
+    {% for variant in product.variants %}
+      {% if variant.available and found_one_in_stock == false %}
+        {% assign found_one_in_stock = true %}
+        {% for option in product.options %}
+          jQuery('.single-option-selector:eq(' + {{ forloop.index0 }} + ')').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+    // Adapt this to your theme
+    $('#product-variants div').addClass("selector-wrapper");
+    $('#product-variants div label').css("float","left");  
+    $('#product-variants div select').css("float","right");
+    $('#product-variants div ').addClass("clearfix").css("clear","both");
+      {% if product.options.size == 1 %}
+          // shows the first result in the array
+          $(".selector-wrapper").append("<label>" + myJSONProduct.options[0] + ":</label>")
+      {% endif %}
+  });
+  // ]]>
+</script>

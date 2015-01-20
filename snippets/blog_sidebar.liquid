@@ -1,0 +1,20 @@
+<div class="span3 sidebar">  
+  {% if settings.display_blog_tags %}
+  <div class="clearfix">
+    {% if blog.all_tags.size > 0 %}
+    <h3>Categories</h3>
+    <ul class="tags_menu">
+      <li{% if current_tags.first != 'TWP Weekend' and current_tags.first != 'TWP Loves' and current_tags.first != 'Behind the Scenes' and current_tags.first != 'WHITEPEPPER Girls'  %} class="active"{% endif %}><a href="{{ shop.url}}/blogs/{{ blog.handle }}?no_feature">All</a></li>
+      <li{% if current_tags.first == 'TWP Weekend' %} class="active"{% endif %}><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/twpweekend">TWP Weekend</a></li>
+      <li{% if current_tags.first == 'TWP Loves' %} class="active"{% endif %}><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/TWP-Loves">TWP Loves</a></li>
+      <li{% if current_tags.first == 'TWP Collections' %} class="active"{% endif %}><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/TWP-Collections">TWP Collections</a></li>
+	  <li{% if current_tags.first == 'WHITEPEPPER Girls' %} class="active"{% endif %}><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/WHITEPEPPER-Girls">WHITEPEPPER Girls</a></li>
+    </ul>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="mini_slider_container">
+    <h3 class="mini_slider_title">New Arrivals</h3>
+    {% include 'mini_slider' %}
+  </div> <!-- .mini_slider_container -->
+</div>

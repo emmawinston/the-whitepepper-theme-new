@@ -1,0 +1,146 @@
+{% if blog.handle == 'press' %}
+{% paginate blog.articles by 24 %}
+<div id="blog">
+  <div class="row row_fix">
+    <div class="span12">
+      <h1>In The Press</h1>
+    </div> 
+  </div> 
+
+
+  <div class="row">
+
+    <div class="span12 articles">
+      {% for article in blog.articles %}
+          {% assign article_has_image = false %}
+          {% assign img_tag = '<' | append: 'img' %}
+            {% if article.excerpt_or_content contains img_tag %}
+              {% assign src = article.excerpt_or_content | split: 'src="' %}
+              {% assign src = src[1] | split: '"' | first %}
+                {% if src %}
+                {% assign article_has_image = true %}
+                {% assign image_src = src | replace: '_small', '_grande' | replace: '_compact', '_grande' | replace: '_large', '_grande' %}
+                {% endif %}
+              {% endif %} 
+
+          {% assign article_has_second_image = false %}
+          {% assign img_tag = '<' | append: 'img' %}
+            {% if article.excerpt_or_content contains img_tag %}
+              {% assign srcsecond = article.excerpt_or_content | split: 'src="' %}
+              {% assign srcsecond = srcsecond[2] | split: '"' | first %}
+                {% if srcsecond %}
+                {% assign article_has_second_image = true %}
+                {% assign image_srcsecond = srcsecond | replace: '_small', '_grande' | replace: '_compact', '_grande' | replace: '_large', '_grande' %}
+                {% endif %}
+              {% endif %} 
+
+              {% assign article_has_third_image = false %}
+          {% assign img_tag = '<' | append: 'img' %}
+            {% if article.excerpt_or_content contains img_tag %}
+              {% assign srcthird = article.excerpt_or_content | split: 'src="' %}
+              {% assign srcthird = srcthird[3] | split: '"' | first %}
+                {% if srcthird %}
+                {% assign article_has_third_image = true %}
+                {% assign image_srcthird = srcthird | replace: '_small', '_grande' | replace: '_compact', '_grande' | replace: '_large', '_grande' %}
+                {% endif %}
+              {% endif %} 
+
+              {% assign article_has_fourth_image = false %}
+          {% assign img_tag = '<' | append: 'img' %}
+            {% if article.excerpt_or_content contains img_tag %}
+              {% assign srcfourth = article.excerpt_or_content | split: 'src="' %}
+              {% assign srcfourth = srcfourth[4] | split: '"' | first %}
+                {% if srcfourth %}
+                {% assign article_has_fourth_image = true %}
+                {% assign image_srcfourth = srcfourth | replace: '_small', '_grande' | replace: '_compact', '_grande' | replace: '_large', '_grande' %}
+                {% endif %}
+              {% endif %} 
+
+              {% assign article_has_fifth_image = false %}
+          {% assign img_tag = '<' | append: 'img' %}
+            {% if article.excerpt_or_content contains img_tag %}
+              {% assign srcfifth = article.excerpt_or_content | split: 'src="' %}
+              {% assign srcfifth = srcfifth[5] | split: '"' | first %}
+                {% if srcfifth %}
+                {% assign article_has_fifth_image = true %}
+                {% assign image_srcfifth = srcfifth | replace: '_small', '_grande' | replace: '_compact', '_grande' | replace: '_large', '_grande' %}
+                {% endif %}
+              {% endif %} 
+
+
+      <div class="blogarticle span4">
+        {% if article_has_image %}
+          <a href="{{ image_src }}" class="zoom" rel="{{ article.id }}">
+            <h2 class="presstitle">{{ article.title }}</h2>
+            <img src="{{ src }}" />
+          </a>
+        {% endif %}
+        {% if article_has_second_image %}
+          <a href="{{ image_srcsecond }}" class="zoom" rel="{{ article.id }}">
+            <img src="{{ srcsecond }}" />
+          </a>
+        {% endif %}
+        {% if article_has_third_image %}
+          <a href="{{ image_srcthird }}" class="zoom" rel="{{ article.id }}">
+            <img src="{{ srcthird }}" />
+          </a>
+        {% endif %}
+        {% if article_has_fourth_image %}
+          <a href="{{ image_srcfourth }}" class="zoom" rel="{{ article.id }}">
+            <img src="{{ srcfourth }}" />
+          </a>
+        {% endif %}
+        {% if article_has_fifth_image %}
+          <a href="{{ image_srcfifth }}" class="zoom" rel="{{ article.id }}">
+            <img src="{{ srcfifth }}" />
+          </a>
+        {% endif %}
+      </div>
+
+  <!-- Begin content -->
+  <!--div class="row">
+
+    <div class="span12 articles">
+      {% for article in blog.articles %}
+          {% assign article_has_image = false %}
+          {% assign img_tag = '<' | append: 'img' %}
+            {% if article.excerpt_or_content contains img_tag %}
+              {% assign src = article.excerpt_or_content | split: 'src="' %}
+              {% assign src = src[1] | split: '"' | first %}
+                {% if src %}
+                {% assign article_has_image = true %}
+                {% assign image_src = src | replace: '_small', '_grande' | replace: '_compact', '_grande' | replace: '_large', '_grande' %}
+                {% endif %}
+              {% endif %} 
+      <div class="blogarticle span4">
+      {% if article_has_image %}
+      <a href="{{ image_src }}" rel="gallery" class="zoom">
+      <h2 class="presstitle">{{ article.title }}</h2>
+          <img src="{{ src }}" />
+      </a>
+    </div>
+
+
+        {% else %}
+        <table><tr><td>
+        <div class="quotewrapper">
+        <center><blockquote>{{ article.excerpt_or_content }}</blockquote></center>
+        </div>
+        <center><h2 class="noimagetitle">{{ article.title }}</h2></center>
+        </td></tr></table>
+    </div>
+        {% endif %}
+      {% endfor %}
+  </div-->
+  <!-- End content -->  
+  {% endfor %}
+</div>
+
+  <div class="span12">
+    <div id="pagination" style="text-align: right;">
+    {{ paginate | default_pagination }}
+    </div>
+  </div>
+{% endpaginate %}
+{% endif %}
+

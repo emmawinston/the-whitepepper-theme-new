@@ -1,0 +1,609 @@
+
+<div id="product" class="{{ product.handle }}">
+  
+  <div class="row clearfix">
+    
+    <!-- Begin breadcrumb -->
+    <div class="span12">
+      <div class="breadcrumb clearfix">
+        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="url"><span itemprop="title">Home</span></a></span> 
+        <span class="arrow-space">&#62;</span>
+        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+          {% if collection %}
+            <a href="{{ collection.url }}" title="{{ collection.title | escape }}">{{ collection.title }}</a>
+          {% else %}
+            <a href="/collections/all" title="All Products">Products</a>
+          {% endif %}
+        </span>
+        <span class="arrow-space">&#62;</span>
+        {% assign prod = "title" %}
+        <strong>{{ product.title }}
+        </strong>
+      </div>
+    </div>
+    <!-- End breadcrumb -->
+    
+    <!-- Begin product photos -->
+    <div class="{% if product.images.size > 1 %}span6 {% else %} span6 {% endif %}">
+      
+      <!-- Begin featured image -->
+      <div class="image featured">
+        {% if settings.enable_product_image_zoom %}
+        <a href="{{ product.featured_image | product_img_url: 'original' }}" class="cloud-zoom" rel="position: 'inside', showTitle: 'false'" id="placeholder">
+         
+         <img src="{{ product.featured_image | product_img_url: 'original' }}" alt="{{ product.featured_image.alt | escape }}" />
+        </a>
+        
+        {% else %}
+        <a href="{{ product.featured_image | product_img_url: 'original' }}" class="zoom" id="placeholder">
+        <img src="{{ product.featured_image | product_img_url: 'original' }}" alt="{{ product.featured_image.alt | escape }}" />
+           </a>
+        
+        {% endif %}
+      </div>
+      <!--Begin thumbs -->
+      <div class="product_thumbs_mobile clearfix">
+     
+          {% if product.images.size > 1 %}
+      
+               
+          {% for image in product.images %}
+          {% if settings.enable_product_image_zoom %}
+        <div class="span1" style="padding-bottom:15px">
+            <a href="{{ image | product_img_url: 'original' }}"  class="cloud-zoom-gallery" rel="useZoom: 'placeholder', smallImage: '{{ image | product_img_url: 'original' }}', tint: '#ffffff'">
+            
+            <img src="{{ image | product_img_url: 'small' }}" width="53" alt="{{ image.alt | escape }}" />
+          </a></div>
+                
+            
+      
+          {% else %}
+          <div class="image">
+            <a href="{{ image | product_img_url: 'original' }}" data-original-image="{{ image | product_img_url: 'original' }}">
+              <img src="{{ image | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
+            </a>
+          {% endif %}
+          {% endfor %}
+               </div>
+      {% endif %}
+      
+      <!-- End thumbnails -->
+    
+      
+      
+      
+          {% if settings.show_social %}
+      <!-- Begin social buttons -->
+
+      <div class="social">
+        {% include 'like' %}
+      </div>
+      {% endif %}
+      <!-- End social buttons -->
+      </div>
+      <!-- End product image -->
+      
+      
+      <!-- Begin product options -->
+      <div class="span6">
+        <h1 class="title"> {% include 'translations' with prod %}
+         {% assign prod = null %}</h1>
+                  
+      <div class="purchase">
+        <h2 class="price" id="price-preview">{{ product.price_min | money }}{% if product.price_min < product.compare_at_price_min %} <del>{{ product.compare_at_price_min | money }}</del>{% endif %}</h2>
+      </div>
+        
+      
+      <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
+        <div class="product-options">
+
+          {% if product.options.size > 1 %}
+          <div class="select clearfix">
+            <select id="product-select" name='id'>
+              {% for variant in product.variants %}
+              <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          {% elsif product.options.size == 1 and product.variants.size > 1 %}
+          <!-- active size selector -->
+          <div class="select clearfix">
+            <label>{{ product.options[0] }}</label>
+            <select id="product-select" name='id'>
+              {% for variant in product.variants %}
+              <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+              {% endfor %}           
+            </select>
+          </div>
+          
+          <!-- check to see if any sizes aren't available -->
+          {% assign size_sold_out = false %}
+          {% for variant in product.variants %}  
+            {% if variant.available %}
+                <!--<p>AVAILABLE:{{ forloop.index0 }}</p>-->
+              {% else %}
+                <!--<p>NOT AVAILABLE:{{ forloop.index0 }}</p>-->
+                {% assign size_sold_out = true %}
+            {% endif %}
+          {% endfor %}
+          {% if size_sold_out == true %}
+          	<a id="popupLink" class="no_size" href="#noSizePopup" class="zoom">Size not available?</a>
+          {% endif %}
+          <!-- end -->
+          
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+          {% endif %}
+          {% if settings.display_quantity_dropdown %}
+          <div class="selector-wrapper">
+            <label>Quantity</label>
+            <textarea name="quantity" value="1" placeholder="1"></textarea>
+             {% endif %} 
+          </div>
+          
+
+          
+          <div class="purchase-section{% if product.variants.size > 1 %} multiple{% endif %}">
+            <div class="purchase">
+              {% unless product.available %}
+              <p>Sold Out</p>
+              {% else %}
+              
+              <input type="submit" id="add-item-to-cart" class="btn3" name="add" value="Add to cart" />
+             
+              {% endunless %}
+             
+            </div>
+          </div>
+        <!-- End product options -->
+        </div> <!-- .product-options -->
+      </form> 
+      
+      <div style="display: none;" class="popup_wrapper">
+        <div id="noSizePopup">
+          <h2>Missing Your Size?</h2>
+          <p>Receive an email when the product becomes available in your size!</p>
+          {% form 'contact' %}
+          <div id="contactFormWrapper">
+            <p>
+              <label>First name:</label><br/>
+              <label id="nameError">Please enter your name.</label>
+              <input type="name" id="contactFormName" name="contact[first name]" />
+            </p>
+            <div class="select clearfix">
+              <label>{{ product.options[0] }} required:</label>
+              <select id="product-select" name="contact[size required]">
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    
+                    {% else %}
+                    <option value="{{ variant.title }}">{{ variant.title }}</option>
+                  {% endif %}               
+                {% endfor %}           
+              </select>
+            </div>          
+            <p>
+              <label>Email:</label><br/>
+              <label id="emailError">Please enter a valid email address.</label>
+              <input type="email" id="contactFormEmail" name="contact[email]" placeholder="" />
+            </p>
+            <input type="order" id="noSizeProduct" name="contact[product]" value="{{ product.title }}" />
+            <p>
+              <input type="submit" class="btn" id="contactFormSubmit" value="SEND" />
+            </p>        	
+          </div><!-- contactWrapper -->
+          {% endform %}
+        </div> <!-- #noSizePopup -->
+      </div>  <!-- popup_wrapper -->
+</div>
+        <!--Begin thumbs -->
+    <div class="product_thumbs">
+   
+        {% if product.images.size > 1 %}
+    
+             
+        {% for image in product.images %}
+        {% if settings.enable_product_image_zoom %}
+      <div class="span1" style="padding-bottom:15px">
+          <a href="{{ image | product_img_url: 'original' }}"  class="cloud-zoom-gallery" rel="useZoom: 'placeholder', smallImage: '{{ image | product_img_url: 'original' }}', tint: '#ffffff'">
+          
+          <img src="{{ image | product_img_url: 'small' }}" width="53" alt="{{ image.alt | escape }}" />
+        </a></div>
+              
+          
+    
+        {% else %}
+        <div class="image">
+          <a href="{{ image | product_img_url: 'original' }}" data-original-image="{{ image | product_img_url: 'original' }}">
+            <img src="{{ image | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
+          </a>
+    
+        {% endif %}
+        {% endfor %}
+             </div>
+             
+    
+    {% endif %}
+    
+    <!-- End thumbnails -->      
+      <!-- Begin description -->
+<div class="span6" style="border-bottom: 1px solid #ccc">
+      
+  <div class="description">
+       
+<ul class="tabs"><!-- Give href an ID value of corresponding "tabs-content" <li>'s -->
+  <li><a class="active" href="#tab1">Info</a></li>
+  <li><a href="#tab2">Size</a></li>
+  <li><a href="#tab3">Shipping</a></li>
+  <li><a href="#tab4">Size Conversion</a></li>
+   {% if product.tags contains 'wash1' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash2' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash4' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash5' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash6' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash7' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash8' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash9' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash10' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash11' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash12' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash13' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash14' %}<li><a href="#tab5">Care</a></li>{% endif %}
+   {% if product.tags contains 'wash15' %}<li><a href="#tab5">Care</a></li>{% endif %}
+    </ul>
+<ul class="tabs-content">
+  <li id="tab1" class="active">
+     {% assign prod = "description" %}
+         {% include 'translations' with prod%}
+         {% assign prod = null %}
+
+    {% if product.metafields.c_f.main_description_paragraph %}
+      <p>{{ product.metafields.c_f.main_description_paragraph }}</p>
+    {% endif %}
+
+    {% if product.metafields.c_f.bullet_1 %}  
+      <ul class="productbullets">
+    {% endif %}
+      
+    {% if product.metafields.c_f.bullet_1 %}
+      <li>{{ product.metafields.c_f.bullet_1 }}</li>
+    {% endif %}
+    {% if product.metafields.c_f.bullet_2 %}
+      <li>{{ product.metafields.c_f.bullet_2 }}</li>
+    {% endif %}
+    {% if product.metafields.c_f.bullet_3 %}
+      <li>{{ product.metafields.c_f.bullet_3 }}</li>
+    {% endif %}
+    {% if product.metafields.c_f.bullet_1 %}  
+      </ul>
+    {% endif %}
+
+    {% if product.variants.first.sku %}
+      <b>Product No. {{ product.variants.first.sku }}</b>
+    {% endif %}
+</li>
+
+<li id="tab2">
+  <!-- SIZE STARTS HERE -->
+
+<!-- socksize description here -->
+{% if product.metafields.socksize.description %}
+  <p></p>{{ product.metafields.socksize.description }}
+{% endif %}
+
+{% if product.metafields.c_f.xs_length or product.metafields.c_f.s_length or product.metafields.c_f.m_length or product.metafields.c_f.l_length %}
+{% if product.metafields.model.model_size or product.metafields.model.model_height or product.metafields.model.model_wears %}
+<table>
+  <tr>
+    <td>Model:</td>
+    <td colspan="2"><center>
+{% if product.metafields.model.model_size %}Size: {{ product.metafields.model.model_size }}{% endif %}</center></td>
+    <td colspan="2"><center>{% if product.metafields.model.model_height %}Height: {{ product.metafields.model.model_height }}{% endif %}</center></td>
+    <td colspan="2"><center>{% if product.metafields.model.model_wears %}Size: {{ product.metafields.model.model_wears }}{% endif %}</center></td>
+  </tr>
+</table>
+{% endif %}
+<table>
+  <tr>
+    <th>&nbsp;</th>
+    <th>X-SMALL
+      <br/>(UK 6-8)</th>
+    <th>SMALL
+      <br/>(UK 8-10)</th>
+    <th>MEDIUM
+      <br/>(UK 10-12)</th>
+    <th>LARGE
+      <br/>(UK 12-14)</th>
+  </tr>
+{% if product.metafields.c_f.xs_length or product.metafields.c_f.s_length or product.metafields.c_f.m_length or product.metafields.c_f.l_length %}
+  <tr>
+    <td><b>Length</b></td>
+    <td>{% if product.metafields.c_f.xs_length %} {{ product.metafields.c_f.xs_length }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.s_length %} {{ product.metafields.c_f.s_length }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.m_length %} {{ product.metafields.c_f.m_length }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.l_length %} {{ product.metafields.c_f.l_length }} {% endif %}</td>
+  </tr> 
+{% endif %}
+{% if product.metafields.c_f.xs_waist or product.metafields.c_f.s_waist or product.metafields.c_f.m_waist or product.metafields.c_f.l_waist %} 
+  <tr>
+    <td><b>Waist</b></td>
+    <td>{% if product.metafields.c_f.xs_waist %} {{ product.metafields.c_f.xs_waist }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.s_waist %} {{ product.metafields.c_f.s_waist }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.m_waist %} {{ product.metafields.c_f.m_waist }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.l_waist %} {{ product.metafields.c_f.l_waist }} {% endif %}</td>
+  </tr>
+{% endif %}
+{% if product.metafields.c_f.xs_bust or product.metafields.c_f.s_bust or product.metafields.c_f.m_bust or product.metafields.c_f.l_bust %}
+  <tr>
+    <td><b>Bust</b></td>
+    <td>{% if product.metafields.c_f.xs_bust %} {{ product.metafields.c_f.xs_bust }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.s_bust %} {{ product.metafields.c_f.s_bust }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.m_bust %} {{ product.metafields.c_f.m_bust }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.l_bust %} {{ product.metafields.c_f.l_bust }} {% endif %}</td>
+  </tr>
+{% endif %}
+{% if product.metafields.c_f.xs_sleeve or product.metafields.c_f.s_sleeve or product.metafields.c_f.m_sleeve or product.metafields.c_f.l_sleeve %}
+  <tr>
+    <td><b>Sleeve</b></td>
+    <td>{% if product.metafields.c_f.xs_sleeve %} {{ product.metafields.c_f.xs_sleeve }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.s_sleeve %} {{ product.metafields.c_f.s_sleeve }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.m_sleeve %} {{ product.metafields.c_f.m_sleeve }} {% endif %}</td>
+    <td>{% if product.metafields.c_f.l_sleeve %} {{ product.metafields.c_f.l_sleeve }} {% endif %}</td>
+  </tr>
+{% endif %}
+  <tr>
+    <td colspan="5"><a href="http://cdn.shopify.com/s/files/1/0156/6472/files/howtomeasure_1.png?4675">How to measure</a></td>
+  </tr>
+  </table>
+{% endif %}
+
+
+<!-- shoesize SIZE TABLE HERE -->
+{% if product.metafields.shoesize.UK3_length or product.metafields.shoesize.UK4_length or product.metafields.shoesize.UK5_length or product.metafields.shoesize.UK6_length or product.metafields.shoesize.UK7_length or product.metafields.shoesize.UK8_length %}
+<table>
+  <tr>
+    <th></th>
+    <th>UK3</th>
+    <th>UK4</th>
+    <th>UK5</th>
+    <th>UK6</th>
+    <th>UK7</th>
+    <th>UK8</th>
+  </tr>
+ {% if product.metafields.shoesize.UK3_length or product.metafields.shoesize.UK4_length or product.metafields.shoesize.UK5_length or product.metafields.shoesize.UK6_length or product.metafields.shoesize.UK7_length or product.metafields.shoesize.UK8_length %}
+  <tr>
+    <td><b>Length</b></td>
+    <td>{% if product.metafields.shoesize.UK3_length %} {{ product.metafields.shoesize.UK3_length }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK4_length %} {{ product.metafields.shoesize.UK4_length }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK5_length %} {{ product.metafields.shoesize.UK5_length }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK6_length %} {{ product.metafields.shoesize.UK6_length }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK7_length %} {{ product.metafields.shoesize.UK7_length }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK8_length %} {{ product.metafields.shoesize.UK8_length }} {% endif %}</td>
+  </tr> 
+  {% endif %}
+  {% if product.metafields.shoesize.UK3_platformheight or product.metafields.shoesize.UK4_platformheight or product.metafields.shoesize.UK5_platformheight or product.metafields.shoesize.UK6_platformheight or product.metafields.shoesize.UK7_platformheight or product.metafields.shoesize.UK8_platformheight %}
+  <tr>
+    <td><b>Platform Height</b></td>
+    <td>{% if product.metafields.shoesize.UK3_platformheight %} {{ product.metafields.shoesize.UK3_platformheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK4_platformheight %} {{ product.metafields.shoesize.UK4_platformheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK5_platformheight %} {{ product.metafields.shoesize.UK5_platformheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK6_platformheight %} {{ product.metafields.shoesize.UK6_platformheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK7_platformheight %} {{ product.metafields.shoesize.UK7_platformheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK8_platformheight %} {{ product.metafields.shoesize.UK8_platformheight }} {% endif %}</td>
+  </tr>
+  {% endif %}
+{% if product.metafields.shoesize.UK3_heelheight or product.metafields.shoesize.UK4_heelheight or product.metafields.shoesize.UK5_heelheight or product.metafields.shoesize.UK6_heelheight or product.metafields.shoesize.UK7_heelheight or product.metafields.shoesize.UK8_heelheight %}
+  <tr>
+    <td><b>Heel Height</b></td>
+   <td>{% if product.metafields.shoesize.UK3_heelheight %} {{ product.metafields.shoesize.UK3_heelheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK4_heelheight %} {{ product.metafields.shoesize.UK4_heelheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK5_heelheight %} {{ product.metafields.shoesize.UK5_heelheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK6_heelheight %} {{ product.metafields.shoesize.UK6_heelheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK7_heelheight %} {{ product.metafields.shoesize.UK7_heelheight }} {% endif %}</td>
+    <td>{% if product.metafields.shoesize.UK8_heelheight %} {{ product.metafields.shoesize.UK8_heelheight }} {% endif %}</td>
+  </tr>
+{% endif %}
+  <tr>
+    <td colspan="7"><a href="http://cdn.shopify.com/s/files/1/0156/6472/files/howtomeasure_1.png?4675">How to measure</a></td>
+  </tr>
+  </table>
+{% endif %}
+
+<!-- ACCESSORIES SIZE TABLE HERE -->
+{% if product.metafields.jewellery.length or product.metafields.jewellery.minlength or product.metafields.jewellery.maxlength or product.metafields.jewellery.chainlength or product.metafields.jewellery.pendantwidth or product.metafields.jewellery.diameter or product.metafields.jewellery.lensdiameter %}
+<table>
+  <tr>
+    <th></th>
+    <th>One Size</th>
+  </tr>
+ {% if product.metafields.jewellery.length %}
+  <tr>
+    <td><b>Length</b></td>
+    <td>{{ product.metafields.jewellery.length }}</td>
+  </tr> 
+  {% endif %}
+  {% if product.metafields.jewellery.minlength %}
+  <tr>
+    <td><b>Min. Length</b></td>
+    <td>{{ product.metafields.jewellery.minlength }}</td>
+  </tr> 
+  {% endif %}
+  {% if product.metafields.jewellery.maxlength %}
+  <tr>
+    <td><b>Max. Length</b></td>
+    <td>{{ product.metafields.jewellery.maxlength }}</td>
+  </tr> 
+  {% endif %}
+  {% if product.metafields.jewellery.chainlength %}
+  <tr>
+    <td><b>Chain Length</b></td>
+    <td>{{ product.metafields.jewellery.chainlength }}</td>
+  </tr> 
+  {% endif %}
+  {% if product.metafields.jewellery.pendantwidth %}
+  <tr>
+    <td><b>Pendant width</b></td>
+    <td>{{ product.metafields.jewellery.pendantwidth }}</td>
+  </tr> 
+  {% endif %}
+  {% if product.metafields.jewellery.diameter %}
+  <tr>
+    <td><b>Diameter</b></td>
+    <td>{{ product.metafields.jewellery.diameter }}</td>
+  </tr> 
+  {% endif %}
+  {% if product.metafields.jewellery.lensdiameter %}
+  <tr>
+    <td><b>Lens Diameter</b></td>
+    <td>{{ product.metafields.jewellery.lensdiameter }}</td>
+  </tr> 
+  {% endif %}
+  <tr>
+    <td colspan="7"><a href="http://cdn.shopify.com/s/files/1/0156/6472/files/howtomeasure_1.png?4675">How to measure</a></td>
+  </tr>
+  </table>
+{% endif %}
+</li>
+
+  	<li id="tab3">
+	<!-- SHIPPINGS STARTS HERE -->
+	{{ pages.shipping-information.content }}
+
+    
+	</li>
+	<!-- SHIPPINGS ENDS HERE -->
+    
+    <li id="tab4">
+    {{ pages.sizeconversion.content }}
+    </li>
+   
+
+<!-- CARE STARTS HERE -->
+ {% if product.tags contains 'wash1' %}<li id="tab5">{% endif %}
+ 
+     {% if product.tags contains 'wash1' %}
+     <img src="https://cdn.shopify.com/s/files/1/0156/6472/t/4/assets/wash1.jpg?4665" alt="wash">
+     
+     {% endif %}
+     
+     {% if product.tags contains 'wash2' %}<li id="tab5">{% endif %}
+    {% if product.tags contains 'wash2' %}
+     <img src="https://cdn.shopify.com/s/files/1/0156/6472/t/4/assets/wash2.jpg?4666" alt="wash">
+     
+     {% endif %}
+    
+         {% if product.tags contains 'wash4' %}<li id="tab5">{% endif %}
+    {% if product.tags contains 'wash4' %}
+     <img src="https://cdn.shopify.com/s/files/1/0156/6472/t/4/assets/wash4.jpg?19037" alt="wash">
+     
+     {% endif %}
+    
+       {% if product.tags contains 'wash5' %}<li id="tab5">{% endif %}
+    {% if product.tags contains 'wash5' %}
+     <img src="https://cdn.shopify.com/s/files/1/0156/6472/t/4/assets/wash5.jpg?19037" alt="wash">
+     
+     {% endif %}
+  
+       {% if product.tags contains 'wash6' %}<li id="tab5">{% endif %}
+    {% if product.tags contains 'wash6' %}
+     <img src="https://cdn.shopify.com/s/files/1/0156/6472/t/4/assets/wash6.jpg?19037" alt="wash">
+     
+     {% endif %}
+ 
+	  {% if product.tags contains 'wash7' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash7' %}
+     <img src="{{ 'wash7.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash8' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash8' %}
+     <img src="{{ 'wash8.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash9' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash9' %}
+     <img src="{{ 'wash9.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash10' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash10' %}
+     <img src="{{ 'wash10.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash11' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash11' %}
+     <img src="{{ 'wash11.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash12' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash12' %}
+     <img src="{{ 'wash12.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash13' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash13' %}
+     <img src="{{ 'wash13.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash14' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash14' %}
+     <img src="{{ 'wash14.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  	  {% if product.tags contains 'wash15' %}<li id="tab5">{% endif %}
+ 	   {% if product.tags contains 'wash15' %}
+     <img src="{{ 'wash15.jpg' | asset_url }}" alt="wash">
+    
+ 	 {% endif %}
+  
+  
+  
+    </li>
+    <!-- CARE ENDS HERE -->
+</ul>
+
+
+
+      
+      </div>
+     </div>
+        <!-- End description -->
+  	<div class="span12">
+      <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+    </div>    
+    </div>
+    <!-- End description -->
+
+      
+      
+  </div>
+  {% if product.metafields.recommendations.productHandles %} 
+    {% include 'related-products' %} 
+  {% else %} 
+    <!-- Begin related product -->
+    {% if settings.show_related_products %}
+      {% if collection and collection.products.size > 1 %}
+      <div class="row">
+        <div class="span12">
+          <h3 class="collection-title">Related products</h3>
+        </div>
+      </div> 
+      
+      <div class="row products">
+        {% for product in collection.products limit:4 %}
+        {% include 'related-product-loop' with collection.handle %}
+        {% endfor %}
+      </div> 
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  
+</div> 

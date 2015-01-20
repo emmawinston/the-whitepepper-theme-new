@@ -1,0 +1,12 @@
+{% paginate collection.products by 24 %}  
+  {% for product in collection.products %}
+
+  {% endfor %}
+<div class="row" align="right">
+  <div class="span12">
+  <div id="pagination">
+  {{ paginate | default_pagination }}
+  </div>
+  </div>
+  </div>
+{% endpaginate %}

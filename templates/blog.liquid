@@ -1,0 +1,178 @@
+{% if blog.handle == 'news' %}
+{% paginate blog.articles by 15 %}
+
+<div id="blog">
+  
+  <!-- Begin content -->
+  <div class="row">
+    
+  {% if template == 'blog' %} 
+    {% if blog.handle == 'news' %}
+		{% if current_tags.first != 'TWP Weekend' and current_tags.first != 'TWP Loves' and current_tags.first != 'TWP Collections' and current_tags.first != 'WHITEPEPPER Girls'  %}
+        	{% include 'blog_feature' %}
+		{% endif %}
+    {% endif %}
+  {% endif %}    
+    
+    <div class="span9 articles">
+      <h1 class="blog_main_heading">{{ blog.title }}</h1>
+      {% for article in blog.articles %}
+      <div class="article" style="padding-bottom: 15px;">
+        <h1><a href="{{ article.url }}">{{ article.title }}</a> <span class="date" style="display: block; line-height: normal;">{{ article.published_at | date: "%B %d %Y" }}{% if article.comments_enabled? %}, <span>{{ article.comments_count }} {{ article.comments_count | pluralize: "Comment", "Comments" }}</span>{% endif %}</span></h1>
+        <!--{{ article.excerpt_or_content }}-->
+        
+        {% if article.content contains "<img" %}
+    	{% assign src = article.content | split: 'src="' %}
+    		{% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn'; | replace: 'http:http://';, 'http://'; | remove: 'https:' %}
+		{% endif %}
+		<a href="{{ article.url }}"><img src="{{ src }}" style="margin-bottom: 8px" /></a>
+		<p>{{ article.content | strip_html | truncate: 300}} <a href="{{ article.url }}">read more >></a></p>
+      </div>
+      <hr class="divider" />
+      {% endfor %}
+    </div>
+    
+    <!-- Begin sidebar -->
+    {% include 'blog_sidebar' %}
+    <!-- End sidebar -->
+    
+  </div>
+  <!-- End content -->
+  <div class="span9">
+    <a href="#blog" class="back_to_top">Back to top</a>
+    <div id="pagination" style="text-align: right;">
+        {{ paginate | default_pagination }}
+    </div>
+  </div>
+  
+</div>
+{% endpaginate %}
+{% endif %}
+
+{% if blog.handle == 'whos-wearing' %}
+{% paginate blog.articles by 48 %}
+<div id="blog">
+  <div class="row row_fix">
+    <div class="span12">
+      <h1>Who's wearing THE WHITEPEPPER?</h1>
+    </div> 
+  </div> 
+
+  <!-- Begin content -->
+  <div class="row">
+    <div class="span12 articles">
+      <div id="wall">
+      {% for article in blog.articles %}
+          {{ article.excerpt_or_content }}
+      {% endfor %}
+      </div>
+    
+  </div>
+  <!-- End content -->  
+</div>
+
+  <div class="span12">
+    <div id="pagination" style="text-align: right;">
+		{{ paginate | default_pagination }}
+    </div>
+  </div>
+{% endpaginate %}
+{% endif %}
+
+
+{% if blog.handle == 'style-me' %}
+{% paginate blog.articles by 10 %}
+<div id="blog">
+  <div class="row row_fix">
+    <div class="span12">
+      <h1>Style me</h1>
+    </div> 
+  </div> 
+
+
+  <!-- Begin content -->
+  <div class="row">
+    <div class="span12 articles">
+     
+
+  
+  
+  {% for article in blog.articles %}
+      {{ article.excerpt_or_content }}
+  {% endfor %}
+    
+  </div>
+  <!-- End content -->  
+</div>
+
+  <div class="span12">
+    <div id="pagination" style="text-align: right;">
+		{{ paginate | default_pagination }}
+    </div>
+  </div>
+{% endpaginate %}
+{% endif %}
+
+
+
+{% if blog.handle == 'street-snaps' %}
+{% paginate blog.articles by 48 %}
+<div id="blog">
+  <div class="row row_fix">
+    <div class="span12">
+      <h1>Street snaps</h1>
+    </div> 
+  </div> 
+
+
+  <!-- Begin content -->
+  <div class="row">
+    <div class="span12 articles">
+     
+
+  
+  
+  {% for article in blog.articles %}
+      {{ article.excerpt_or_content }}
+  {% endfor %}
+    
+  </div>
+  <!-- End content -->  
+</div>
+
+  <div class="span12">
+    <div id="pagination" style="text-align: right;">
+		{{ paginate | default_pagination }}
+    </div>
+  </div>
+{% endpaginate %}
+{% endif %}
+  
+{% if blog.handle == 'inspire-me' %}
+{% paginate blog.articles by 15 %}
+<div id="blog">
+  <div class="row row_fix">
+    <div class="span12">
+      <h1>Inspire me</h1>
+    </div> 
+  </div> 
+
+  <!-- Begin content -->
+  <div class="row">
+    <div class="articles">
+ 
+  {% for article in blog.articles %}
+      {{ article.excerpt_or_content }}
+  {% endfor %}
+    
+  </div>
+  <!-- End content -->  
+</div>
+
+  <div class="span12">
+    <div id="pagination" style="text-align: right;">
+		{{ paginate | default_pagination }}
+    </div>
+  </div>
+{% endpaginate %}
+{% endif %}

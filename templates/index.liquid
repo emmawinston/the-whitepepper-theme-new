@@ -1,0 +1,111 @@
+<div class="row" id="feature_2">
+	<div class="span6 first">
+		<a href="{{ settings.front1-link }}">
+			<img src="{{'front1-img.jpg' | asset_url }}" alt="{{ settings.front1-text }}"/>
+		</a>
+	</div> 
+
+	<div class="span6 last">
+		<a href="{{ settings.front2-link }}">
+			<img src="{{'front2-img.jpg' | asset_url }}" alt="{{ settings.front2-text }}"/>
+		</a>
+	</div> 
+</div> <!-- #feature_section_2 -->
+
+<div class="row" id="feature_3">
+	<div class="span4 first">
+		<a href="{{ settings.front3-link }}">
+			<img src="{{'front3-img.jpg' | asset_url }}" alt="{{ settings.front3-text }}"/>
+		</a>
+	</div> 
+
+	<div class="span4">
+		<a href="{{ settings.front4-link }}">
+			<img src="{{'front4-img.jpg' | asset_url }}" alt="{{ settings.front4-text }}"/>
+		</a>
+	</div> 
+
+	<div class="span4 last">
+		<a href="{{ settings.front5-link }}">
+			<img src="{{'front5-img.jpg' | asset_url }}" alt="{{ settings.front5-text }}"/>
+		</a>
+	</div>
+</div> <!-- #feature_3-->
+
+<div class="row">
+	<div id="instafeed" class="span12"></div>
+</div>
+
+<!--div id="feature_4" class="row">
+		<img src="{{ 'whatwelove-img.jpg' | asset_url }}" alt="{{ settings.whatwelove-text }}" />
+		<div id="carousel">
+	      {% if settings.carousel1 %}
+	      <div>
+	      	<a href="{{ settings.carousel1-link }}" >
+	      		<img src="{{ 'carousel1-img.jpg' | asset_url }}" alt="{{ settings.carousel1-text }}"/>
+	      		<div class="carouseltext">{{ settings.carousel1-text }}</div>
+	      	</a>
+	      </div>
+	      {% endif %}
+	      {% if settings.carousel2 %}
+	      <div>
+	      	<a href="{{ settings.carousel2-link }}" >
+	      		<img src="{{ 'carousel2-img.jpg' | asset_url }}" alt="{{ settings.carousel2-text }}" />
+	      		<div class="carouseltext">{{ settings.carousel2-text }}</div>
+	      	</a>
+	      </div>
+	      {% endif %}
+	      {% if settings.carousel3 %}
+	      <div><a href="{{ settings.carousel3-link }}" ><img src="{{ 'carousel3-img.jpg' | asset_url }}" alt="{{ settings.carousel3-text }}" />
+	      	<div class="carouseltext">{{ settings.carousel3-text }}</div--><!--div class="bricktext"><span>{{ settings.naughtysmall1_linktext }}</span></div--><!--/a></div>
+	      {% endif %}
+	      {% if settings.carousel4 %}
+	      <div><a href="{{ settings.carousel4-link }}" ><img src="{{ 'carousel4-img.jpg' | asset_url }}" alt="{{ settings.carousel4-text }}" />
+	      	<div class="carouseltext">{{ settings.carousel4-text }}</div-->
+	      	<!--div class="bricktext"><span>{{ settings.naughtysmall1_linktext }}</span></div></a--><!--/div>
+	      {% endif %}
+	      {% if settings.carousel5 %}
+	      <div><a href="{{ settings.carousel5-link }}" ><img src="{{ 'carousel5-img.jpg' | asset_url }}" alt="{{ settings.carousel5-text }}" />
+	      	<div class="carouseltext">{{ settings.carousel5-text }}</div--><!--div class="bricktext"><span>{{ settings.naughtysmall1_linktext }}</span></div--><!--/a></div>
+	      {% endif %}
+	      {% if settings.carousel6 %}
+	      <div><a href="{{ settings.carousel6-link }}" ><img src="{{ 'carousel6-img.jpg' | asset_url }}" alt="{{ settings.carousel6-text }}" />
+		<div class="carouseltext">{{ settings.carousel6-text }}</div-->
+	      	<!--div class="bricktext"><span>{{ settings.naughtysmall1_linktext }}</span></div></a></div>
+	      {% endif %}
+	      {% if settings.carousel7 %}
+	      <div><a href="{{ settings.carousel7-link }}" ><img src="{{ 'carousel7-img.jpg' | asset_url }}" alt="{{ settings.carousel7-text }}" />
+	      	<div class="carouseltext">{{ settings.carousel7-text }}</div-->
+	      	<!--div class="bricktext"><span>{{ settings.naughtysmall1_linktext }}</span></div--><!--/a></div>
+	      {% endif %}
+	      {% if settings.carousel8 %}
+	      <div><a href="{{ settings.carousel8-link }}" ><img src="{{ 'carousel8-img.jpg' | asset_url }}" alt="{{ settings.carousel8-text }}" />
+	      	<div class="carouseltext">{{ settings.carousel8-text }}</div-->
+	      	<!--div class="bricktext"><span>{{ settings.naughtysmall1_linktext }}</span></div--><!--/a></div>
+	      {% endif %}
+		</div>
+	</div-->
+
+<!-- Begin intro -->
+<!--{% if settings.homepage != blank %}-->
+
+<!--div class="span12 p20">
+  {{ pages[settings.homepage].content }}
+</div>
+{% endif %} -->
+<!-- End intro -->
+
+
+<!-- Begin homepage products -->
+<!--div class="stylists_pick">
+  <h2>Stylist's Pick</h2>
+  <div class="arrow"></div>
+</div--><!-- stylists_pick --> 
+
+      
+<!--div class="products">
+  {% for product in collections[settings.frontpage_collection].products %}
+  {% include 'product-loop' with settings.frontpage_collection %}
+  {% endfor %}
+</div-->
+<!-- End products -->

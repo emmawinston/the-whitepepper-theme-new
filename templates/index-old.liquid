@@ -1,0 +1,94 @@
+<div class="row" id="feature_section_naughtynice">
+	<div class="span6 first">
+	<a href="{{ settings.frontnice_link }}">
+		<img src="{{'frontnice.png' | asset_url }}" />
+	</a>
+</div>
+<div class="span6 last">
+	<a href="{{ settings.frontnaughty_link }}">
+		<img src="{{'frontnaughty.png' | asset_url }}" />
+	</a>
+</div>
+</div>
+
+<!--div class="row" id="feature_section_1"-->
+
+<!-- {% if settings.gif_mainmidtop1 %}
+<div class="span4 first">
+<a href="{{ settings.gif_mainmidtop1_link }}" ><img src="{{ 'gif_mainmidtop1.gif' | asset_url }}" /></a>
+</div>
+{% else %}
+<div class="span4 first">
+<a href="{{ settings.mainmidtop1_link }}"><img src="{{ 'mainmidtop1.png' | asset_url }}"/></a>
+</div>
+{% endif %}
+  
+{% if settings.gif_mainmidtop2 %}
+<div class="span4">
+<a href="{{ settings.gif_mainmidtop2_link }}" ><img src="{{ 'gif_mainmidtop2.gif' | asset_url }}" /></a>
+</div>
+{% else %}
+<div class="span4">
+<a target="_blank" href="{{ settings.mainmidtop2_link }}"><img src="{{ 'mainmidtop2.png' | asset_url }}"/></a>
+</div>
+{% endif %}
+  
+{% if settings.gif_mainmidtop3 %}
+<div class="span4 last">
+<a href="{{ settings.gif_mainmidtop3_link }}" ><img src="{{ 'gif_mainmidtop3.gif' | asset_url }}" /></a>
+</div>
+{% else %}
+<div class="span4 last">
+<a href="{{ settings.mainmidtop3_link }}"><img src="{{ 'mainmidtop3.png' | asset_url }}"/></a>
+</div>
+{% endif %}
+  
+</div--> <!-- #feature_section_1 -->
+
+<!--div class="row" id="feature_section_2">
+
+{% if settings.gif_mainmidbottom1 %}
+<div class="span6 first">
+<a href="{{ settings.gif_mainmidbottom1_link }}" ><img src="{{ 'gif_mainmidbottom1.gif' | asset_url }}" /></a>
+</div>
+{% else %}
+<div class="span6 first">
+<a href="{{ settings.mainmidbottom1_link }}"><img src="{{ 'mainmidbottom1.png' | asset_url }}"/></a>
+</div>
+{% endif %}
+  
+{% if settings.gif_mainmidbottom2 %}
+<div class="span6 last">
+<a href="{{ settings.gif_mainmidbottom2_link }}" ><img src="{{ 'gif_mainmidbottom2.gif' | asset_url }}" /></a>
+</div>
+{% else %}
+<div class="span6 last">
+<a href="{{ settings.mainmidbottom2_link }}"><img src="{{ 'mainmidbottom2.png' | asset_url }}"/></a>
+</div>
+{% endif %}
+  
+</div> --> <!-- #feature_section_1 -->
+
+<!-- Begin intro -->
+{% if settings.homepage != blank %}
+
+<div class="span12 p20">
+  {{ pages[settings.homepage].content }}
+</div>
+{% endif %}
+<!-- End intro -->
+
+
+<!-- Begin homepage products -->
+<!--div class="stylists_pick">
+  <h2>Stylist's Pick</h2>
+  <div class="arrow"></div>
+</div> --> <!-- stylists_pick --> 
+
+      
+<!--div class="products">
+  {% for product in collections[settings.frontpage_collection].products %}
+  {% include 'product-loop' with settings.frontpage_collection %}
+  {% endfor %}
+</div>-->
+<!-- End products -->

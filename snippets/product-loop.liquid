@@ -1,0 +1,60 @@
+{% capture collection_handle %}{{ product-loop | handleize }}{% endcapture %}
+{% capture url %}{% if collection_handle != "" %}/collections/{{ product-loop }}{{ product.url }}{% else %}{{ product.url }}{% endif %}{% endcapture %}
+<div class="product{% if settings.products_per_row == "4" %} span3{% endif %}{% if settings.products_per_row == "3" %} span4{% endif %}{% if settings.products_per_row == "2" %} span6{% endif %}">
+  
+  {% if product.price_min < product.compare_at_price_min %}
+    {% if settings.show_sale_circle %}
+    <span class="circle sale">Sale</span>
+    {% endif %}
+  {% endif %}
+  
+  <div class="image">
+    <a href="{{ url }}">
+	  {% capture badUrl %}
+      	{{ product.images[1] | product_img_url: 'compact' }}
+      {% endcapture %}
+      
+      {% if badUrl contains "no-image-compact.gif" %}
+      <img class="first_img" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" data-second-img="{{ product.featured_image | product_img_url: 'large' }}" />	
+      {% else %}
+      <img class="first_img" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" data-second-img="{{ product.images[1] | product_img_url: 'large' }}" />	
+      {% endif %}
+    </a>
+  </div>
+  
+  <div class="details">
+    <a href="{{ url }}" class="clearfix">
+      <h4 class="title">{{ product.title }}</h4>
+      {% if settings.product_vendor %}
+      <span class="vendor">{{ product.vendor }}</span>
+      {% endif %}
+      
+      <span class="price">
+      {% if product.available %}
+        {% if product.price_varies %}
+          {% if product.compare_at_price_max > product.price %}
+            <del>{{ product.compare_at_price_min | money }}</del>
+          {% endif %}
+        <small><em>from</em></small>
+        {% endif %}
+        {{ product.price_min | money }}
+        {% else %}
+        {{ product.price_min | money }} Sold Out
+      {% endif %}
+      </span>
+      
+    </a>
+    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+  </div>
+  
+</div>
+<!-- .mobile_portrait_fix div is used to fix the 2 column layout on the mobile portrait display  -->
+{% if settings.products_per_row == "4" %}
+{% cycle 'clear-product-loop': '', '<div class="mobile_portrait_fix" style="clear:both;"></div>', '', '<div style="clear:both;"></div>' %}
+{% endif %}
+{% if settings.products_per_row == "3" %}
+{% cycle 'clear-product-loop': '', '', '<div class="product_divider" style="clear:both;"></div>' %}
+{% endif %}
+{% if settings.products_per_row == "2" %}
+{% cycle 'clear-product-loop': '', '<div style="clear:both;"></div>' %}
+{% endif %}

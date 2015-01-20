@@ -1,0 +1,92 @@
+<div id="collection">
+  
+  {% paginate collection.products by settings.pagination_limit %}
+  <!-- Begin collection info -->
+  <div class="row row_fix">
+    <div class="span12">
+      
+      <!-- Begin sort collection -->
+      <div class="clearfix">
+        <h1 class="collection-title">{{ collection.title }}</h1>
+
+        {% if settings.collection_tags %}
+          {% capture col_url%}{% if collection.url.size == 0 %}/collections/all{%else%}{{collection.url}}{%endif%}{%endcapture%}
+          {% if collection.all_tags.size > 0 %}
+          <div class="browse-tags">
+          	<label>Browse:</label>
+          	<select name="collection_tags" id="collection_tags" class="loc_on_change">
+          		<option value="{{ col_url }}">All items</option>
+          		{% for tag in collection.all_tags %}
+          			<option value="{{col_url}}/{{ tag | handle }}"{% if current_tags contains tag %} selected="selected"{%endif%}>{{ tag }}</option>
+          		{% endfor %}
+          	</select>
+          </div>
+          {% endif %}
+        {% endif %}
+      </div>
+
+      <div>
+        <label for="sort-by">Sort by</label>
+        <select id="sort-by">
+          <option value="manual">Featured</option>
+          <option value="price-ascending">Price: Low to High</option>
+          <option value="price-descending">Price: High to Low</option>
+          <option value="title-ascending">A-Z</option>
+          <option value="title-descending">Z-A</option>
+          <option value="created-ascending">Oldest to Newest</option>
+          <option value="created-descending">Newest to Oldest</option>
+          <option value="best-selling">Best Selling</option>
+        </select>
+      </div>
+      <script>
+      Shopify.queryParams = {};
+      if (location.search.length) {
+      for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+      aKeyValue = aCouples[i].split('=');
+      if (aKeyValue.length > 1) {
+      Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+      }
+      }
+      }
+      jQuery('#sort-by')
+      .val('{{ collection.sort_by | default: collection.default_sort_by | escape }}')
+      .bind('change', function() {
+      Shopify.queryParams.sort_by = jQuery(this).val();
+      location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+      });
+      </script> 
+      <!-- End sort collection -->
+      
+      <!-- Begin collection description -->
+      {% if collection.description != "" %}
+      	<div class="coll_desc_wrapper">
+        	{{ collection.description }}
+      	</div> <!-- coll_desc_wrapper -->
+      {% endif %}
+      <!-- End collection description -->
+      
+    </div>
+  </div>
+  <!-- End collection info -->
+  
+  <!-- Begin no products -->
+  {% if collection.products.size == 0 %}
+  <div class="row">
+    <div class="span12 expanded-message">
+      <p></p>
+    </div>
+  </div>
+  {% endif %}
+  
+  <div class="row products">
+    {% for product in collection.products limit: settings.pagination_limit %}
+    {% include 'product-loop' with collection.handle %}
+    {% endfor %}
+  </div>
+  
+  {% include 'pagination' %}
+
+  {% endpaginate %}
+  <!-- End no products -->
+  
+</div>

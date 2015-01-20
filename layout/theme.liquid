@@ -1,0 +1,586 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+<head>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
+
+  {{ 'jquery.wookmark.js' | asset_url | script_tag }}
+  {{ 'jquery.slicknav.min.js' | asset_url | script_tag }}
+  {{ 'jquery.imagesloaded.js' | asset_url | script_tag }}
+  {{ 'jquery.qtip.min.js' | asset_url | script_tag }}
+  {{ 'jquery.scrollstop.js' | asset_url | script_tag }}
+  {{ 'modernizr.js' | asset_url | script_tag }}
+  
+  {% if template == "index" %}
+    {{ 'instafeed.min.js' | asset_url | script_tag }}
+    {{ 'jquery.dotdotdot.min.js' | asset_url | script_tag }}
+  {% endif %}
+
+
+  {% if template == "nice.page" or "naughty.page" %}
+  {{ 'jquery.packery.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'jquery.scrollstop.js' | asset_url | script_tag }}
+  {{ 'slick.css' | asset_url | stylesheet_tag }}
+  
+  <!-- this deals with the out of date version of cloud zoom plugin -->
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+  <!-- end -->
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+    $("#instafeed").dotdotdot();
+    });
+</script>
+
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% if template == "404" %}Page not found{% else %}{{ page_title | escape }}{% if settings.title_tags != "" %}{% endif %} - {{ shop.name }}{% if settings.title_tags != "" %} - {{ settings.title_tags }}{% endif %}{% endif %}</title>
+
+  {% if template == "index" %}
+  {% if settings.meta_description == "" %}
+  <meta name="description" content="{{ shop.description }}" />
+  {% else %}
+  <meta name="description" content="{{ settings.meta_description }}" />
+  {% endif %}
+  {% endif %}
+  <meta name="author" content="{{ settings.meta_author }}" />
+  <meta name="keywords" content="{{ settings.meta_keywords }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  {{ content_for_header }}
+  
+  <link rel="canonical" href="{{ canonical_url }}" /> 
+  
+  <meta property="og:site_name" content="{{ shop.name }}" />
+  {% if template contains 'product' %}
+    <meta property="og:image" content="{{ product.featured_image | product_img_url: 'compact' }}" />
+  {% elsif template contains 'article' %}
+    {% if article.content contains '<img' %}
+      {% assign src = article.content | split: 'src="' %}
+      {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' %}
+      {% if src %}<meta property="og:image" content="{{ src }}" />{% endif %}
+   {% endif %}
+  {% else %}
+    {% if settings.use_logo %}
+      <meta property="og:image" content="{{ 'logo.png' | asset_url }}" />
+    {% endif %}
+  {% endif %}
+
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {{ 'slicknav.css' | asset_url | stylesheet_tag }}
+  {{ 'jquery.qtip.css' | asset_url | stylesheet_tag }}
+  {{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
+  {% if settings.google_header_font != "none" %}
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.google_header_font }}:300,400,700">
+  {% endif %}
+  {% if settings.google_nav_font != "none" %}
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.google_nav_font }}:300,400,700">
+  {% endif %}
+  {{ 'html5shiv.js' | asset_url | script_tag }}
+  {% include 'capture' %}
+  
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/c/video.js"></script>
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33352936-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+{% include 'localization' %}
+
+</head>
+
+<body id="template_{{ template | handle }}" class="{{ page_title | handle }}">
+
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- offer -->
+  <div id="offer_wrapper">
+    <div id="offer_container">
+      {% if settings.offer1_show %}
+        {% if settings.offer2_show and settings.offer3_show %}
+          <div class="offer1_container three">
+        {% else %}
+          <div class="offer1_container two">
+        {% endif %}
+            <a href="{{ settings.offer1_link }}" class="offer1">{{ settings.offer1_text }}</a>
+          </div><!-- first offer -->
+      {% endif %}
+
+      {% if settings.offer2_show %}
+        {% if settings.offer1_show and settings.offer3_show %}
+          <div class="offer2_container three">
+        {% else %}
+          <div class="offer2_container two">
+        {% endif %}
+            <a href="{{ settings.offer2_link }}" class="offer2">{{ settings.offer2_text }}</a>
+          </div>
+      {% endif %}
+
+      {% if settings.offer3_show %}
+        {% if settings.offer1_show and settings.offer2_show %}
+          <div class="offer3_container three">
+        {% else %}
+          <div class="offer3_container two">
+        {% endif %}
+          <a href="{{ settings.offer3_link }}" class="offer3">{{ settings.offer3_text }}</a>
+      {% endif %}
+      </div>
+    </div> <!-- #offer_container -->
+  </div>  <!-- #offer_wrapper -->
+  
+<a href="/" id="small_logo"><img src="{{ 'logo_small.png' | asset_url }}" alt="{{ shop.name }}" /></a>
+
+  <div id="header">
+    <!-- Begin toolbar -->
+    <div class="toolbar-wrapper">
+      <div class="toolbar clearfix">
+        <ul class="unstyled account_menu">                     
+          <li class="search-field">
+            <form class="search" action="/search">
+              <input type="image" src="{{ 'icon-search.png' | asset_url }}" alt="Go" id="go">
+              <input type="text" name="q" class="search_box" placeholder="Search" value="{{ search.terms }}" x-webkit-speech />
+            </form>
+          </li>
+          {% if cart.item_count != 0 %}
+          <li class="account_checkout"><a href="/cart" title="Checkout">Checkout</a></li>
+          {% endif %}
+          
+          <li class="account_cart"><span class="icon-cart"></span><a href="/cart" class="cart" title="Shopping Cart">Cart: {{ cart.item_count }}</a></li>
+          {% include 'customer_links' %}
+          {% if customer  %} 
+      <li class="last">
+        {{ 'Logout' | customer_logout_link }}  
+          </li>
+      {% else %}
+          <li class="last">
+              {% if shop.customer_accounts_optional %}
+          {{ 'Sign up' | customer_register_link }}
+          {% endif %}
+            
+          </li>
+
+          {% if settings.header_discount %}
+          <li>
+              <a class="discount_label" href="#discountPopup" class="zoom">
+                  <span class="normal">10% Discount<br/>First Purchase</span>
+                  <span class="click_here" style="display: none;">Click here for information</span>
+              </a>
+          </li>
+          {% endif %}
+        {% endif %}
+       </li>
+          
+     {% if settings.top_bar_linklist != blank %}
+          {% for link in linklists[settings.top_bar_linklist].links %}
+          <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+          {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <!-- End toolbar -->
+
+    <!-- Begin right navigation -->
+    {% if settings.navigation_alignment == "right" %}
+    <div class="row" id="header">
+
+      <div class="logo">
+        {% if settings.use_logo %}
+        <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" /></a>
+        {% else %}
+        <h1><a href="/">{{ shop.name }}</a></h1>
+        {% endif %}
+      </div> 
+
+      <section id="nav">
+        <div class="span9 inner-right">
+          <nav class="main">
+            {% include 'dropdown' %}
+          </nav> 
+          <nav class="mobile clearfix">
+            <select name="main_navigation" id="main_navigation" class="fl">
+              <option value="{{ active_url }}" selected="selected">{{ active_title }}</option>
+              {% for link in linklists[settings.main_linklist].links %}
+              {% if active_url != link.url %}
+              <option value="{{ link.url }}">{{ link.title }}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+          </nav>
+        </div> 
+      </section> 
+   
+    </div> 
+    {% endif %}
+    <!-- End right navigation -->
+    
+    <!-- Begin below navigation -->
+    {% if settings.navigation_alignment == "below" %}
+    <div class="logo">
+      {% if settings.use_logo %}
+      <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" /></a>
+      {% else %}
+      <h1><a href="/">{{ shop.name }}</a></h1>
+      {% endif %}
+    </div>
+
+    {% if settings.header_discount %}
+    <div style="display: none;" class="popup_wrapper">
+      <div id="discountPopup">
+        <h2>First Order Discount</h2>
+    <p>Receive a 10% discount on your first order by following these steps:</p>
+        <ol>
+      <li>Create an account by clicking 'Sign up'.</li>
+      <li>Copy this <em>discount code: firstorder</em></li>
+      <li>When you are in Step 2 of the checkout process paste the discount code into the discount code box.</li>
+    </ol>
+      </div> <!-- #noSizePopup -->
+    </div>  <!-- popup_wrapper -->
+  {% endif %}
+
+    
+  <!-- this is the main menu -->
+    <section id="nav" class="row">
+      <nav class="main">
+        {% include 'dropdown' %}
+      </nav> <!-- /.main -->
+      <nav class="mobile clearfix">
+        <ul class="navigation">
+        
+          {% for link in linklists.main-menu.links %}
+        
+        <!-- does this link in our iteration point to the current page? -->
+        {% assign current = false %}{% if template == 'index' and link.url == '/' %}{% assign current = true %}{% elsif collection.url == link.url %}{% assign current = true %}{% elsif blog.url == link.url %}{% assign current = true %}{% elsif page.url == link.url %}{% assign current = true %}{% elsif page_title == link.title %}{% assign current = true %}{% elsif template == 'list-collections' and link.url == '/collections' %}{% assign current = true %}{% elsif page_title == 'Products' and link.url == '/collections/all' %}{% assign current = true %}{% elsif template == 'article' and link.url == article.url %}{% assign current = true %}{% endif %}
+        <!-- end of soul-searching about active class -->
+        
+          <li{% if forloop.first %} class="first"{% endif %}>
+            <a{% if current %} class="active"{% endif %} href="{{ link.url }}">{{ link.title }}</a>
+            {% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
+            {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+            <ul>
+              {% for l in linklists[child_list_handle].links %}
+              <li><a href="{{ l.url }}">{{ l.title }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+         
+          {% endfor %}
+      <li class="search-field">
+            <form class="search" action="/search">
+              <input class="search" type="text" name="q" class="search_box" placeholder="Search" value="{{ search.terms }}" x-webkit-speech />
+        <input type="image" src="{{ 'icon-search-white.png' | asset_url }}" alt="Go" id="go">
+            </form>
+          </li>
+        </ul>
+      </nav>  
+    </section> 
+    {% endif %}
+    <!-- End below navigation -->
+
+  </div> <!-- #header -->  
+
+  <!-- Begin wrapper -->
+  {% if template == "index" %}
+
+  <div class="row" id="feature_1">
+    <div class="full first">
+      <a href="{{ settings.frontmain-link }}">
+        <img src="{{'frontmain-img.png' | asset_url }}" alt="{{ settings.frontmain-text }}" />
+      </a>
+    </div>  
+  </div> <!-- #feature_section_1 -->
+
+  {% endif %}
+
+  <div id="transparency" class="wrapper">
+    <div class="row">
+          
+      <!-- Begin content-->
+      <section id="content" class="clearfix">
+          {% if template == "list-collections" %}
+          <div id="collection" class="row">
+            <div class="span12">
+              <h1><span>Product Collections</span></h1>
+            </div> <!-- /.span12 -->
+          </div> <!-- /.row -->
+          
+          <div class="row products masonry">
+            {% for collection in collections %}
+            {% unless collection.all_products_count == 0 or collection.handle == "frontpage" %}
+            {% include 'collection-loop' %}
+            {% endunless %}
+            {% endfor %}
+          </div> <!-- /#collection.row -->
+          {% else %}
+          {{ content_for_layout }}
+          {% endif %}
+      </section>
+      <!-- End content-->
+    </div>
+  </div>
+  <!-- End wrapper -->
+  
+  <!-- Begin footer -->
+  <div class="footer-wrapper">
+    <footer>
+      <div class="row">
+        
+        <div class="span12 full-border"></div>
+        
+        <!-- Begin footer navigation -->
+        <div class="span4">
+          <h4>{{ settings.footer_linklist_title }}</h4>
+          <ul class="unstyled">
+            {% for link in linklists[settings.footer_linklist].links %}
+              <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <!-- End footer navigation -->
+        
+        <!-- Begin twitter -->
+        <div class="span4">
+          <h4>{{ settings.footer_linklist_title2 }}</h4>
+          <ul class="unstyled">
+            {% for link in linklists[settings.footer_linklist2].links %}
+              <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <!-- End twitter -->
+        
+        <!-- Begin newsletter/social -->
+        <div class="span4">
+          
+          {% if settings.footer_display_newsletter %}
+          <div class="p30">
+            <h4>{{ settings.footer_newsletter_title }}</h4>
+            <form action="{{ settings.mailing_list_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+              <input type="email" value="" placeholder="Email Address" name="email" id="mail" /><input type="submit" class="btn newsletter" value="Subscribe" name="subscribe" id="subscribe" />
+            </form>
+          </div>
+          {% endif %}
+           
+        
+<div>
+          
+<div class="clearfix">
+          {% if settings.enable_social_links %}
+            <h4>{{ settings.footer_social_title }}</h4>
+            {% if settings.twitter_link != '' %}<a href="{{ settings.twitter_link }}"target="_blank" title="{{ shop.name }} on Twitter" class="icon-social twitter">Twitter</a>{% endif %}
+            {% if settings.facebook_link != '' %}<a href="{{ settings.facebook_link }}"target="_blank" " title="{{ shop.name }} on Facebook" class="icon-social facebook">Facebook</a>{% endif %}
+            {% if settings.tumblr_link != '' %}<a href="{{ settings.tumblr_link }}"target="_blank" " title="{{ shop.name }} on Tumblr" class="icon-social tumblr">Tumblr</a>{% endif %}        
+            {% if settings.pinterest_link != '' %}<a href="{{ settings.pinterest_link }}"target="_blank" title="{{ shop.name }} on Pinterest" class="icon-social pinterest">Pinterest</a>
+            {% endif %}
+            {% if settings.insta_link != '' %}<a href="{{ settings.insta_link }}" target="_blank" title="{{ shop.name }} on Instagram" class="icon-social insta">Instagram</a>{% endif %}
+            {% if settings.youtube_link != '' %}<a href="{{ settings.youtube_link }}" target="_blank" title="{{ shop.name }} on YouTube" class="icon-social youtube">YouTube</a>{% endif %}
+            <a href="https://plus.google.com/101099091637248225527/posts" target="_blank" " title="{{ shop.name }} on Google+" class="icon-social google">Google+</a>
+      <a href="http://the-whitepepper.polyvore.com/" target="_blank" " title="{{ shop.name }} on Polyvore" class="icon-social polyvore">Polyvore</a>         
+{% endif %}
+
+</div>
+
+         <br>
+
+       <div style="float:left; padding-top:0px; padding-bottom:10px;">
+               Keep up to date with our latest collections and offers:
+         <div id="mc_embed_signup">
+
+  <form action="http://thewhitepepper.us6.list-manage.com/subscribe/post?u=2be7159017aadfa7919bb21d5&amp;id=53572b412b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+    
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required="">
+<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn2"></form>
+</div>
+          </div>
+     
+         
+         
+          <img src="http://cdn.shopify.com/s/files/1/0156/6472/files/paypal_logos5.png?7144">
+          <br>
+
+          </div>
+          </div>
+        </div>
+
+         
+        <!-- End newsletter/social -->
+        
+        <!-- Begin copyright -->
+        <div class="span12 tc copyright">
+          <p>Copyright &copy; {{ 'now' | date: "%Y" }} {{ shop.name }} LTD   <br/>Company Registration No: 08034033 </p>
+        </div>
+        <!-- End copyright -->
+
+      </div>
+    </footer>
+  </div>
+  <!-- End footer -->
+
+   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  
+
+
+
+  {% if template contains 'customers' %}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+    
+  {% if settings.display_slideshow %}
+    {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
+  {% endif %}
+  {% if settings.enable_product_image_zoom %}
+    {{ 'jquery.zoom.js' | asset_url | script_tag }}
+  {% endif %}
+  {{ 'jquery.tweet.js' | asset_url | script_tag }}
+  {{ 'jquery.fancybox.pack.js' | asset_url | script_tag }}
+  {{ 'scripts.js' | asset_url | script_tag }}
+  {{ 'jquery.hoverimage.js' | asset_url | script_tag }}
+ 
+  {% include 'ajaxify-cart' %}
+  
+  <script type="text/javascript">
+  Shopify.money_format = '{{ shop.money_format }}';
+  </script>
+  {% if template contains "product" %}
+  <script type="text/javascript">
+  jQuery(document).ready(function($){
+    {% if product.variants.size > 1 or product.options.size > 1 %}
+    new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback });
+{% if product.options.size == 1 %}
+  {% for variant in product.variants %}
+    {% unless variant.available %}
+    jQuery('.single-option-selector option:eq({{ forloop.index0 }})').attr('disabled', 'disabled');
+    {% endunless %}
+  {% endfor %}
+  jQuery('.single-option-selector').trigger('change');
+{% endif %}
+
+    {% assign found_one_in_stock = false %}
+    {% for variant in product.variants %}
+    {% if variant.available and found_one_in_stock == false %}
+    {% assign found_one_in_stock = true %}
+    {% for option in product.options %}
+    $('#product-select-option-' + {{ forloop.index0 }}).val({{ variant.options[forloop.index0] | json }}).trigger('change');
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+
+    {% endif %}
+  });
+  </script>
+  {% endif %}
+
+         <script id='SPI-CONFIG-SCRIPT'>
+                        {% if customer %}
+                            var SPI_SHOPIFY_USER_ID = {{ customer.id }}; 
+                            var SPI_SHOPIFY_EMAIL= '{{ customer.email }}'; 
+                        {% endif %}
+                        {% if product %} 
+                        var SPI_SHOPIFY_PRODUCT_ID = '{{ product.id }}'; 
+                        var SPI_SHOPIFY_PRODUCT_PRICE = '{{ product.price | money_without_currency }}'; 
+                        var SPI_SHOPIFY_PRODUCT_IMAGE = '{{product.featured_image}}'; 
+                        var SPI_SHOPIFY_PRODUCT_TITLE = {{product.title | json}}; 
+                        {% endif %}
+                    </script> 
+
+<script>
+jQuery('a[href^="http"]').not('a[href^="{{ shop.url }}"]').attr('target', '_blank');
+</script>
+
+{% if template == "nice.page" or "naughty.page" %}
+  <script>
+// initialize Isotope
+var $container = $('#tiles');
+// init
+$container.packery({
+  itemSelector: '.brick',
+  columnwidth: 320,
+  gutter: 0
+});
+  </script>
+  {% endif %}
+
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.15/slick.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+  $('#carousel').slick({
+    slidesToShow: 5,
+    infinite: true,
+    responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+  });
+});
+  </script>
+
+{% if template == "index" %}
+{% raw %}
+<script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'tagged',
+        tagName: 'thewhitepepper',
+        clientId: '0994fedb1f964aa39704dcc82d50db3b',
+        resolution: 'standard_resolution',
+        limit: 7,
+        template: '<a href="{{link}}" class="instalink" target="_blank"><p><span class="instacaption">{{caption}}</span></p><img src="{{image}}" /></a>'
+    });
+    feed.run();
+</script>
+{% endraw %}
+
+{% endif %}
+
+
+
+  </body>
+</html>

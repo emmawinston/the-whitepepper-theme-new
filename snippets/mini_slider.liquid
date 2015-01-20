@@ -1,0 +1,40 @@
+<!-- Begin slider -->
+<div class="flexslider-container" id="mini_slider">
+  <div class="flexslider">
+    <ul class="slides">
+      {% if settings.display_mini_slideshow_1 %}
+        <li><a href="{{ settings.mini_image_1_link }}"><img src="{{ 'mini_slideshow_1.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+    
+      {% if settings.display_mini_slideshow_2 %}
+        <li><a href="{{ settings.mini_image_2_link }}"><img src="{{ 'mini_slideshow_2.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_3 %}
+        <li><a href="{{ settings.mini_image_3_link }}"><img src="{{ 'mini_slideshow_3.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_4 %}
+      	<li><a href="{{ settings.mini_image_4_link }}"><img src="{{ 'mini_slideshow_4.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_5 %}
+      	<li><a href="{{ settings.mini_image_5_link }}"><img src="{{ 'mini_slideshow_5.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_6 %}
+      	<li><a href="{{ settings.mini_image_6_link }}"><img src="{{ 'mini_slideshow_6.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_7 %}
+      	<li><a href="{{ settings.mini_image_7_link }}"><img src="{{ 'mini_slideshow_7.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_8 %}
+      	<li><a href="{{ settings.mini_image_8_link }}"><img src="{{ 'mini_slideshow_8.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_9 %}
+      	<li><a href="{{ settings.mini_image_9_link }}"><img src="{{ 'mini_slideshow_9.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_mini_slideshow_10 %}
+      	<li><a href="{{ settings.mini_image_10_link }}"><img src="{{ 'mini_slideshow_10.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+    </ul>
+    <div class="flex-controls"></div>
+  </div>
+</div>
+<!-- End slider -->

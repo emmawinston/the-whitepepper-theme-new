@@ -1,0 +1,52 @@
+{% if blog.handle == 'whos-wearing' %}
+{% paginate blog.articles by 24 %}
+<div id="blog">
+  <div class="row row_fix">
+    <div class="span12">
+      <h1>Who's wearing THE WHITEPEPPER?</h1>
+    </div> 
+  </div> 
+
+  <!-- Begin content -->
+  <div class="row">
+    <div class="span12 articles">
+      <div id="wall">
+      {% for article in blog.articles %}
+      {% assign article_has_image = false %}
+          {% assign img_tag = '<' | append: 'img' %}
+            {% if article.excerpt_or_content contains img_tag %}
+              {% assign src = article.excerpt_or_content | split: 'src="' %}
+              {% assign src = src[1] | split: '"' | first %}
+                {% if src %}
+                {% assign article_has_image = true %}
+                {% assign image_src = src | replace: '_small', '_grande' | replace: '_compact', '_grande' | replace: '_large', '_grande' %}
+                {% endif %}
+              {% endif %}
+
+        <div class="brick">
+          {% if article_has_image %}
+          <a href="{{ image_src }}" class="zoom" rel="{{ article.id }}">
+            <img src="{{ src }}">
+          </a>
+          <div class="brick_text">
+            {{ article.excerpt_or_content }}
+          </div>
+        {% endif %}
+        {{ article.body_html }}
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- End content -->  
+</div>
+
+hello 
+  <div class="span12">
+    <div id="pagination" style="text-align: right;">
+		{{ paginate | default_pagination }}
+    </div>
+  </div>
+{% endpaginate %} 
+{% endif %}
+

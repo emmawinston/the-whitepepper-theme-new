@@ -1,0 +1,36 @@
+{% if settings.navigation_alignment == "right" %}
+<ul class="horizontal fr unstyled clearfix">
+{% endif %}
+{% if settings.navigation_alignment == "below" %}
+<ul class="horizontal unstyled clearfix">
+{% endif %}
+  {% for link in linklists[settings.main_linklist].links %}
+  {% if linklists[link.handle] == empty %}
+  <li class="blog{% if settings.display_collection_dropdown and link.type == 'collection_link' and link.object.tags.size > 0 %} dropdown{% endif %}{% if settings.display_blog_dropdown and link.type == 'blog_link' and link.object.articles.size > 0 %} dropdown{% endif %}">
+  <a href="{{ link.url }}" class="{% if link.url == active_url %} current{% endif %}{% if template == 'article' and link.url == blog.url %} current{% endif %}{% if settings.use_cufon_on_navigation %} cufon{% endif %}blog"><span>{{ link.title }}</span></a>
+  {% if settings.display_collection_dropdown and link.type == 'collection_link' and link.object.tags.size > 0 %}
+  <ul class="dropdown">
+  {% for tag in link.object.tags %}
+    <li><a href="{{ link.url }}?constraint={{ tag | handleize }}">{{ tag }}</a></li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+  {% if settings.display_blog_dropdown and link.type == 'blog_link' and link.object.articles.size > 0 %}
+  <ul class="dropdown">
+    {% for article in link.object.articles %}
+    <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  </li>
+{% else %}
+<li class="dropdown {{ link.title }}"><a href="{{ link.url }}" class="{% if link.url == active_url %} current{% endif %}{% if template == 'article' and link.url == blog.url %} current{% endif %}{% if settings.use_cufon_on_navigation %} cufon{% endif %}"><span>{{ link.title }}</span></a>
+  <ul class="dropdown">
+    {% for link in linklists[link.handle].links %}
+    <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}>{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>
+</li>
+{% endif %}
+{% endfor %}
+</ul>

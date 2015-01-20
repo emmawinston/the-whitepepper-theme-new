@@ -1,0 +1,2045 @@
+<div class="documentation-header">
+  <h3>Minimal Theme</h3>
+  <br />
+  <p><strong>Documentation:</strong> <a href="http://minimal-theme.myshopify.com/pages/theme-documentation">http://minimal-theme.myshopify.com/pages/theme-documentation</a><br /></p>
+  <p><strong>Support:</strong> <a href="mailto:support@shopify.com">support@shopify.com</a></p>
+  <br />
+</div>
+
+<fieldset>
+  <legend>Logo, Images, and Colors</legend>
+  <table>
+    <tr>
+      <td colspan="2">
+        <h3>Logo &amp; Background Settings</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="use_logo">Use a custom logo?</label></th>
+      <td>
+        <input type="checkbox" id="use_logo" name="use_logo" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="logo">Shop Logo (should be less than 700 pixels wide)</label></th>
+      <td>
+        <input type="file" id="logo" name="logo.png" data-max-width="700" data-max-height="600" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="logo_center">Center logo (when main navigation is below)?</label></th>
+      <td>
+        <input type="checkbox" id="logo_center" name="logo_center" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="use_favicon_image">Use a <a href="http://en.wikipedia.org/wiki/Favicon" target="_blank">favicon</a> image?</label></th>
+      <td>
+        <input type="checkbox" id="use_favicon_image" name="use_favicon_image" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="logo">Upload a favicon<br />(must be 16px x 16px)</label></th>
+      <td>
+        <input type="file" id="logo" name="favicon.png" data-max-width="16" data-max-height="16" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="use_custom_bg_image">Use a background image?</label></th>
+      <td>
+        <input type="checkbox" id="use_custom_bg_image" name="use_custom_bg_image" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="custom_bg_image">Background Image</label></th>
+      <td>
+        <input type="file" id="custom_bg_image" name="custom_bg.png" />
+      </td>
+    </tr>
+    <tr>
+       <th><label for="background_image_display">Background image display style?</label></th>
+       <td>
+         <input type="radio" name="background_image_display" value="tiled" /> Tiled
+         <input type="radio" name="background_image_display" value="full" /> Not tiled
+         <input type="radio" name="background_image_display" value="stretch" /> Stretch
+       </td>
+     </tr>
+     <tr>
+       <td colspan="2">
+         <h3>Toolbar (Search Bar) Colors</h3>
+       </td>
+     </tr>
+    <tr>
+      <th><label for="stylist_pick_color">Stylist pick bar Color</label></th>
+      <td><input id="stylist_pick_color" name="stylist_pick_color" class="color" value="#000000" /></td>
+    </tr>
+    <tr>
+      <th><label for="stylist_pick_text_color">Stylist pick text Color</label></th>
+      <td><input id="stylist_pick_text_color" name="stylist_pick_text_color" class="color" value="#000000" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_bg_color">Toolbar Background Color</label></th>
+      <td><input id="toolbar_bg_color" name="toolbar_bg_color" class="color" value="#000000" /></td>
+    </tr>
+    <tr>
+      <th><label for="no_toolbar_background">Remove Toolbar Background Color?</label></th>
+      <td>
+        <input type="checkbox" id="no_toolbar_background" name="no_toolbar_background" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_text_color">Toolbar Text Color</label></th>
+      <td><input id="toolbar_text_color" name="toolbar_text_color" class="color" value="#bbbbbb" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_text_hover_color">Toolbar Text Hover Color</label></th>
+      <td><input id="toolbar_text_hover_color" name="toolbar_text_hover_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_border_style">Show Toolbar Bottom Border?</label></th>
+      <td>
+        <input type="radio" name="toolbar_border_style" value="none" /> None
+        <input type="radio" name="toolbar_border_style" value="regular_width" /> Regular width
+        <input type="radio" name="toolbar_border_style" value="full_width" /> Full width
+      </td>
+    </tr>
+    <tr>
+      <th><label for="toolbar_border_color">Toolbar Border Color</label></th>
+      <td><input id="toolbar_border_color" name="toolbar_border_color" class="color" value="#dddddd" /></td>
+    </tr>
+    <tr>
+      <th><label for="search_border">Show border around search?</label></th>
+      <td>
+        <input type="checkbox" id="search_border" name="search_border" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="search_border_color">Search Border Color</label></th>
+      <td><input id="search_border_color" name="search_border_color" class="color" value="#dddddd" /></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+      <h3>Footer Colors</h3>
+    </td>
+    </tr>
+    <tr>
+      <th><label for="footer_bg_color">Footer Background Color</label></th>
+      <td><input id="footer_bg_color" name="footer_bg_color" class="color" value="#000000" /></td>
+    </tr>
+    <tr>
+      <th><label for="no_footer_background">Remove Footer Background Color?</label></th>
+      <td>
+        <input type="checkbox" id="no_footer_background" name="no_footer_background" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_text_color">Footer Text Color</label></th>
+      <td><input id="footer_text_color" name="footer_text_color" class="color" value="#AAAAAA" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_heading_color">Footer Heading Color</label></th>
+      <td><input id="footer_heading_color" name="footer_heading_color" class="color" value="#EEEEEE" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_link_color">Footer Link Color</label></th>
+      <td><input id="footer_link_color" name="footer_link_color" class="color" value="#DDDDDD" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_link_hover_color">Footer Link Hover Color</label></th>
+      <td><input id="footer_link_hover_color" name="footer_link_hover_color" class="color" value="#FFFFFF" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_show_underline">Show Footer Heading Underline?</label></th>
+      <td>
+        <input type="checkbox" id="footer_show_underline" name="footer_show_underline" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_heading_border_color">Footer Heading Underline Color</label></th>
+      <td><input id="footer_heading_border_color" name="footer_heading_border_color" class="color" value="#DDDDDD" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_border_style">Show Footer Border?</label></th>
+      <td>
+        <input type="radio" name="footer_border_style" value="none" /> None
+        <input type="radio" name="footer_border_style" value="regular_width" /> Regular width
+        <input type="radio" name="footer_border_style" value="full_width" /> Full width
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_border_color">Footer Border Color</label></th>
+      <td><input id="footer_border_color" name="footer_border_color" class="color" value="#DDDDDD" /></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Content Area Colors</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="shop_bg_color">Shop Background Color</label></th>
+      <td><input id="shop_bg_color" name="shop_bg_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_bg_color_content_area">Content Area Background Color</label></th>
+      <td><input id="shop_bg_color_content_area" name="shop_bg_color_content_area" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_bg_color_content_transparent">No Content Area Background Color</label></th>
+      <td>
+        <input type="checkbox" id="shop_bg_color_content_transparent" name="shop_bg_color_content_transparent" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="body_font_color">Font Color</label></th>
+      <td>
+        <input id="body_font_color" name="body_font_color" class="color" value="#555555" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="header_color">Heading Color</label></th>
+      <td><input id="header_color" name="header_color" class="color" value="#333333" /></td>
+    </tr>
+    <tr>
+      <th><label for="link_color">Link Color</label></th>
+      <td><input id="link_color" name="link_color" class="color" value="#f45b4f" /></td>
+    </tr>
+    <tr>
+      <th><label for="link_hover_color">Link Hover Color</label></th>
+      <td><input id="link_hover_color" name="link_hover_color" class="color" value="#ee4d41" /></td>
+    </tr>
+    <tr>
+      <th><label for="price_color">Price Color</label></th>
+      <td><input id="price_color" name="price_color" class="color" value="#999999" /></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Buttons</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn_color">Button Background Color</label></th>
+      <td><input id="shop_btn_color" name="shop_btn_color" class="color" value="#f45b4f" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn_hover_color">Button Background Hover Color</label></th>
+      <td><input id="shop_btn_hover_color" name="shop_btn_hover_color" class="color" value="#ee4d41" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn_text_color">Button Text Color</label></th>
+      <td><input id="shop_btn_text_color" name="shop_btn_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn_hover_text_color">Button Text Hover Color</label></th>
+      <td><input id="shop_btn_hover_text_color" name="shop_btn_hover_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="button_border_radius">Button Border Radius</label></th>
+      <td>
+        <select name="button_border_radius" id="button_border_radius">
+          <option value="15px">15px</option>
+          <option value="10px">10px</option>
+          <option value="7px">7px</option>
+          <option value="5px">5px</option>
+          <option value="4px">4px</option>
+          <option value="3px">3px</option>
+          <option value="2px" selected="selected">2px</option>
+          <option value="none">None</option>
+        </select>
+      </td>
+    </tr>
+        <tr>
+          <td colspan="2">
+          <h3>Button 2</h3>
+        </td>
+      </tr>
+      <tr>
+      <th><label for="shop_btn2_color">Button Background Color</label></th>
+      <td><input id="shop_btn2_color" name="shop_btn2_color" class="color" value="#f45b4f" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn2_hover_color">Button Background Hover Color</label></th>
+      <td><input id="shop_btn2_hover_color" name="shop_btn2_hover_color" class="color" value="#ee4d41" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn2_text_color">Button Text Color</label></th>
+      <td><input id="shop_btn2_text_color" name="shop_btn2_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn2_hover_text_color">Button Text Hover Color</label></th>
+      <td><input id="shop_btn2_hover_text_color" name="shop_btn2_hover_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+          <tr>
+          <td colspan="2">
+          <h3>Button 3</h3>
+        </td>
+      </tr>
+        <tr>
+      <th><label for="shop_btn3_color">Button Background Color</label></th>
+      <td><input id="shop_btn3_color" name="shop_btn3_color" class="color" value="#f45b4f" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn3_hover_color">Button Background Hover Color</label></th>
+      <td><input id="shop_btn3_hover_color" name="shop_btn3_hover_color" class="color" value="#ee4d41" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn3_text_color">Button Text Color</label></th>
+      <td><input id="shop_btn3_text_color" name="shop_btn3_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="shop_btn3_hover_text_color">Button Text Hover Color</label></th>
+      <td><input id="shop_btn3_hover_text_color" name="shop_btn3_hover_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="button_border_radius">Button Border Radius</label></th>
+      <td>
+        <select name="button_border_radius" id="button_border_radius">
+          <option value="15px">15px</option>
+          <option value="10px">10px</option>
+          <option value="7px">7px</option>
+          <option value="5px">5px</option>
+          <option value="4px">4px</option>
+          <option value="3px">3px</option>
+          <option value="2px" selected="selected">2px</option>
+          <option value="none">None</option>
+        </select>
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td colspan="2">
+        <h3>Borders</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="border_style">General Border Styles</label></th>
+      <td>
+        <select name="border_style" id="border_style">
+          <option value='solid' selected="selected">Solid</option>
+          <option value='dashed'>Dashed</option>
+          <option value='dotted'>Dotted</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="border_color">General Border Colors</label></th>
+      <td><input id="border_color" name="border_color" class="color" value="#dddddd" /></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Tabs</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="tab_bg_color">Tab Background Color</label></th>
+      <td><input id="tab_bg_color" name="tab_bg_color" class="color" value="#f5f5f5" /></td>
+    </tr>
+    <tr>
+      <th><label for="tab_bakground_none">No Tab Background Color</label></th>
+      <td><input type="checkbox" id="tab_bakground_none" name="tab_bakground_none" value="1" /></td>
+    </tr>
+    <tr>
+      <th><label for="tab_bg_active_color">Tab Active Background Color</label></th>
+      <td><input id="tab_bg_active_color" name="tab_bg_active_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="tab_bakground_active_none">No Tab Active Background Color</label></th>
+      <td><input type="checkbox" id="tab_bakground_active_none" name="tab_bakground_active_none" value="1" /></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Typography</legend>
+  <table>
+    <tr>
+      <td colspan="2">
+        <h3>Base Styles</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="regular_font">Base Typeface</label></th>
+      <td>
+        <select class="font" name="regular_font" id="regular_font">
+          <option value="Helvetica, Arial, 'Lucida Grande', sans-serif" selected="selected">Lucida Grande</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="body_font_size">Font Size</label></th>
+      <td>
+        <select name="body_font_size" id="body_font_size">
+          <option value="16px">16px</option>
+          <option value="15px">15px</option>
+          <option value="14px">14px</option>
+          <option value="13px">13px</option>
+          <option value="12px" selected="selected">12px</option>
+          <option value="11px">11px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="body_line_height">Line Height</label></th>
+      <td>
+        <select name="body_line_height" id="body_line_height">
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="22px">22px</option>
+          <option value="20px">20px</option>
+          <option value="18px" selected="selected">18px</option>
+          <option value="16px">16px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Navigation Styles</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="google_nav_font">Google WebFonts Navigation Typeface</label></th>
+      <td>
+        <select name="google_nav_font" id="google_nav_font">
+          <option value='none'>-- None --</option>
+          <option value='Abril+Fatface'>Abril Fatface</option>
+          <option value='Arvo'>Arvo</option>
+          <option value='Asap'>Asap</option>
+          <option value='Bevan'>Bevan</option>
+          <option value='Cabin'>Cabin</option>
+          <option value='Copse'>Copse</option>
+          <option value='Dancing+Script'>Dancing Script</option>
+          <option value='Droid+Sans'>Droid Sans</option>
+          <option value='Droid+Serif'>Droid Serif</option>
+          <option value='Gentium+Book+Basic'>Gentium Book Basic</option>
+          <option value='Gravitas+One'>Gravitas One</option>
+          <option value='Gruppo'>Gruppo</option>
+          <option value='Josefin+Slab'>Josefin Slab</option>
+          <option value='Josefin+Sans'>Josefin Sans</option>
+          <option value='Kreon'>Kreon</option>
+          <option value='Lato'>Lato</option>
+          <option value='Merriweather'>Merriweather</option>
+          <option value='Old+Standard+TT'>Old Standard TT</option>
+          <option value='Open+Sans'>Open Sans</option>
+          <option value='Vollkorn'>Vollkorn</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="nav_font_size">Navigation Font Size</label></th>
+      <td>
+        <select name="nav_font_size" id="nav_font_size">
+          <option value="20px">20 px</option>
+          <option value="19px">19 px</option>
+          <option value="18px">18 px</option>
+          <option value="17px">17 px</option>
+          <option value="16px">16 px</option>
+          <option value="15px">15 px</option>
+          <option value="14px">14 px</option>
+          <option value="13px" selected="selected">13 px</option>
+          <option value="12px">12 px</option>
+          <option value="11px">11 px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="nav_weight">Navigation Font Weight</label></th>
+      <td>
+        <select name="nav_weight" id="nav_weight">
+          <option value="700" selected="selected">Bold</option>
+          <option value="400">Regular</option>
+          <option value="300">Light</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="nav_font_style">Navigation Font Style</label></th>
+      <td>
+        <select name="nav_font_style" id="nav_font_style">
+          <option value="none" selected="selected">None</option>
+          <option value="uppercase">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="nav_line_height">Navigation Line Height</label></th>
+      <td>
+        <select name="nav_line_height" id="nav_line_height">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px" selected="selected">48px</option>
+          <option value="36px">36px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Heading Styles</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="google_header_font">Google Typefaces</label></th>
+      <td>
+        <select name="google_header_font" id="google_header_font">
+          <option value='none'>-- None --</option>
+          <option value='Abril+Fatface'>Abril Fatface</option>
+          <option value='Arvo'>Arvo</option>
+          <option value='Asap'>Asap</option>
+          <option value='Bevan'>Bevan</option>
+          <option value='Cabin'>Cabin</option>
+          <option value='Copse'>Copse</option>
+          <option value='Dancing+Script'>Dancing Script</option>
+          <option value='Droid+Sans'>Droid Sans</option>
+          <option value='Droid+Serif'>Droid Serif</option>
+          <option value='Gentium+Book+Basic'>Gentium Book Basic</option>
+          <option value='Gravitas+One'>Gravitas One</option>
+          <option value='Gruppo'>Gruppo</option>
+          <option value='Josefin+Slab'>Josefin Slab</option>
+          <option value='Josefin+Sans'>Josefin Sans</option>
+          <option value='Kreon'>Kreon</option>
+          <option value='Lato'>Lato</option>
+          <option value='Merriweather'>Merriweather</option>
+          <option value='Old+Standard+TT'>Old Standard TT</option>
+          <option value='Open+Sans'>Open Sans</option>
+          <option value='Vollkorn'>Vollkorn</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="header_font">Websafe Typefaces</label></th>
+      <td>
+        <select class="font" name="header_font" id="header_font">
+          <option value="'Lucida Grande', Helvetica, Arial, sans-serif" selected="selected">Lucida Grande</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="header_weight">Font Weight</label></th>
+      <td>
+        <select name="header_weight" id="header_weight">
+          <option value="700" selected="selected">Bold</option>
+          <option value="400">Regular</option>
+          <option value="300">Light</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="header_font_style">Font Style</label></th>
+      <td>
+        <select name="header_font_style" id="header_font_style">
+          <option value="none" selected="selected">None</option>
+          <option value="uppercase">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="shop_heading_font_size">Shop Heading: Font Size</label></th>
+      <td>
+        <select name="shop_heading_font_size" id="shop_heading_font_size">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px" selected="selected">48px</option>
+          <option value="36px">36px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Main Heading Styles (h1 elements)</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="main_heading_font_size">Font Size</label></th>
+      <td>
+        <select name="main_heading_font_size" id="main_heading_font_size">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px" selected="selected">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="main_heading_line_height">Line Height</label></th>
+      <td>
+        <select name="main_heading_line_height" id="main_heading_line_height">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px" selected="selected">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Sub Heading Styles (h2 elements)</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="sub_heading_font_size">Font Size</label></th>
+      <td>
+        <select name="sub_heading_font_size" id="sub_heading_font_size">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px">36px</option>
+          <option value="28px" selected="selected">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="sub_heading_line_height">Line Height</label></th>
+      <td>
+        <select name="sub_heading_line_height" id="sub_heading_line_height">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px" selected="selected">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Sub Heading Styles (h3 elements)</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_heading_font_size">Font Size</label></th>
+      <td>
+        <select name="footer_heading_font_size" id="footer_heading_font_size">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px" selected="selected">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_heading_line_height">Line Height</label></th>
+      <td>
+        <select name="footer_heading_line_height" id="footer_heading_line_height">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px">36px</option>
+          <option value="28px" selected="selected">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Button Styles</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="btn_font_size">Font Size</label></th>
+      <td>
+        <select name="btn_font_size" id="btn_font_size">
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="15px">15px</option>
+          <option value="14px">14px</option>
+          <option value="12px" selected="selected">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="btn_line_height">Line Height</label></th>
+      <td>
+        <select name="btn_line_height" id="btn_line_height">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="40px">40px</option>
+          <option value="36px" selected="selected">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="btn_font_style">Font Style</label></th>
+      <td>
+        <select name="btn_font_style" id="btn_font_style">
+          <option value="none" selected="selected">None</option>
+          <option value="uppercase">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="btn_font_weight">Font Weight</label></th>
+      <td>
+        <select name="btn_font_weight" id="btn_font_weight">
+          <option value="700" selected="selected">Bold</option>
+          <option value="400">Regular</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  
+</fieldset>
+<fieldset>
+  <legend>Navigation</legend>
+  <table>
+    <tr>
+      <th><label for="main_linklist">Main Navigation Linklist</label></th>
+      <td><select name="main_linklist" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="navigation_alignment">Main navigation alignment? (Note: using right aligned navigation requires a logo smaller than 300px in width)</label></th>
+      <td>
+        <input type="radio" name="navigation_alignment" value="right" /> Right of Logo
+        <input type="radio" name="navigation_alignment" value="below" /> Below Logo
+      </td>
+    </tr>
+    <tr>
+      <th><label for="navigation_center">Center navigation links?</label></th>
+      <td><input type="checkbox" id="navigation_center" name="navigation_center" value="" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_right_padding">Right nav top padding (in pixels)</label></th>
+      <td><input id="nav_right_padding" name="nav_right_padding" value="70" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_link_color">Nav Link Color</label></th>
+      <td><input id="nav_link_color" name="nav_link_color" class="color" value="#888888" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_link_hover_color">Nav Link Hover Color</label></th>
+      <td><input id="nav_link_hover_color" name="nav_link_hover_color" class="color" value="#222222" /></td>
+    </tr>
+    <tr>
+      <th><label for="selected_nav_link_color">Selected Nav Link Color</label></th>
+      <td><input id="selected_nav_link_color" name="selected_nav_link_color" class="color" value="#222222" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_dropdown_background_color">Nav Dropdown Background Color</label></th>
+      <td><input id="nav_dropdown_background_color" name="nav_dropdown_background_color" class="color" value="#888888" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_dropdown_link_color">Nav Dropdown Link Color</label></th>
+      <td><input id="nav_dropdown_link_color" name="nav_dropdown_link_color" class="color" value="#888888" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_dropdown_link_hover_color">Nav Dropdown Link Hover Color</label></th>
+      <td><input id="nav_dropdown_link_hover_color" name="nav_dropdown_link_hover_color" class="color" value="#222222" /></td>
+    </tr>
+    <tr>
+      <th><label for="show_dropdown_arrow">Show dropdown arrow icon?</label></th>
+      <td><input type="checkbox" id="show_dropdown_arrow" name="show_dropdown_arrow" value="1" selected="selected"/></td>
+    </tr>
+    <tr>
+      <th><label for="dropdown_arrow">Show dropdown menu arrow?</label></th>
+      <td>
+        <input type="radio" name="dropdown_arrow" value="none" /> None
+        <input type="radio" name="dropdown_arrow" value="light" /> Light
+        <input type="radio" name="dropdown_arrow" value="dark" /> Dark
+      </td>
+    </tr>
+  </table>
+</fieldset>
+
+
+<fieldset>
+  <legend>Header</legend>
+  <table>
+
+    <tr>
+      <th><label for="delivery_bar_font_size">Font Size For Delivery and Student Bar - DESKTOP</label></th>
+      <td>
+        <select name="delivery_bar_font_size" id="delivery_bar_font_size">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px" selected="selected">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+          <option value="9px">9px</option>
+          <option value="8px">8px</option>
+          <option value="7px">7px</option>
+          <option value="6px">6px</option>
+        </select>
+      </td>
+    </tr> 
+
+    <tr>
+      <th><label for="delivery_bar_font_size_mobile_landscape">Font Size For Delivery and Student Bar - MOBILE LANDSCAPE</label></th>
+      <td>
+        <select name="delivery_bar_font_size_mobile_landscape" id="delivery_bar_font_size_mobile_landscape">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px" selected="selected">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+          <option value="9px">9px</option>
+          <option value="8px">8px</option>
+          <option value="7px">7px</option>
+          <option value="6px">6px</option>
+        </select>
+      </td>
+    </tr> 
+
+    <tr>
+      <th><label for="delivery_bar_font_size_mobile_portrait">Font Size For Delivery and Student Bar - MOBILE PORTRAIT</label></th>
+      <td>
+        <select name="delivery_bar_font_size_mobile_portrait" id="delivery_bar_font_size_mobile_portrait">
+          <option value="72px">72px</option>
+          <option value="60px">60px</option>
+          <option value="48px">48px</option>
+          <option value="36px">36px</option>
+          <option value="28px">28px</option>
+          <option value="24px">24px</option>
+          <option value="21px">21px</option>
+          <option value="18px">18px</option>
+          <option value="16px">16px</option>
+          <option value="14px">14px</option>
+          <option value="12px" selected="selected">12px</option>
+          <option value="11px">11px</option>
+          <option value="10px">10px</option>
+          <option value="9px">9px</option>
+          <option value="8px">8px</option>
+          <option value="7px">7px</option>
+          <option value="6px">6px</option>
+        </select>
+      </td>
+    </tr> 
+    
+    
+    
+    <tr>
+      <th><label for="offer1_text">Offer 1 text</label></th>
+      <td>
+        <input type="text" id="offer1_text" name="offer1_text" value="" />
+      </td>
+    </tr>        
+    
+    <tr>
+      <th><label for="offer1_link">URL for Offer 1</label></th>
+      <td>
+        <input type="text" id="offer1_link" name="offer1_link" value="" />
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        <label for="offer1_show">Show Offer 1?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="offer1_show" value="1" />
+      </td>
+    </tr>
+    <br/>
+    <tr>
+      <th><label for="offer2_text">Offer 2 text</label></th>
+      <td>
+        <input type="text" id="offer2_text" name="offer2_text" value="" />
+      </td>
+    </tr> 
+
+    <tr>
+      <th><label for="offer2_link">URL for Offer 2 </label></th>
+      <td>
+        <input type="text" id="offer2_link" name="offer2_link" value="" />
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        <label for="offer2_show">Show Offer 2?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="offer2_show" value="1" />
+      </td>
+    </tr>       
+    <br/>
+    <tr>
+      <th><label for="offer3_text">Offer 3 text</label></th>
+      <td>
+        <input type="text" id="offer3_text" name="offer3_text" value="" />
+      </td>
+    </tr>        
+    
+    <tr>
+      <th><label for="offer3_link">URL for Offer 3 </label></th>
+      <td>
+        <input type="text" id="offer3_link" name="offer3_link" value="" />
+      </td>
+    </tr>  
+
+    <tr>
+      <th>
+        <label for="offer3_show">Show Offer 3 box?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="offer3_show" value="1" />
+      </td>
+    </tr>
+<br/>
+<tr>
+      <th>
+        <label for="banner_top">Header banner</label>
+      </th>      
+      <td>
+        <input type="file" id="banner_top" name="banner_top.jpg" />
+      </td>
+    </tr> 
+
+  <tr>
+      <th>
+        <label for="banner_top">Header banner link</label>
+      </th>      
+      <td>
+        <input type="text" id="banner_top_link" name="banner_top_link" />
+      </td>
+    </tr>   
+
+  <tr>
+      <th>
+        <label for="banner_top_alt">Header banner alt text</label>
+      </th>      
+      <td>
+        <input type="text" id="banner_top_alt" name="banner_top_alt" value="" />
+      </td>
+    </tr>       
+
+    <tr>
+      <th>
+        <label for="banner_top_show">Show banner underneath boxes?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="banner_top_show" value="1" />
+      </td>
+    </tr>     
+
+  </table>
+
+  <table>
+    <tr>
+      <th><label for="header_discount">Show 10% discount in header?</label></th>
+      <td><input type="checkbox" name="header_discount" value="1" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+
+
+
+<fieldset>
+  <legend>Footer</legend>
+  <table>
+    <tr>
+      <th><label for="footer_linklist_title">Link list title:</label></th>
+      <td><input type="text" id="footer_linklist_title" name="footer_linklist_title" value="Quick Links" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_linklist">Link list to display</label></th>
+      <td><select name="footer_linklist" class="linklist" /></td>
+    </tr>
+        <tr>
+      <th><label for="footer_linklist_title2">Link list title:</label></th>
+      <td><input type="text" id="footer_linklist_title2" name="footer_linklist_title2" value="More information" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_linklist2">Link list to display</label></th>
+      <td><select name="footer_linklist2" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_display_twitter">Display twitter feed?</label></th>
+      <td><input type="checkbox" id="footer_display_twitter" name="footer_display_twitter" value="" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_twitter_title">Twitter feed title:</label></th>
+      <td><input type="text" id="footer_twitter_title" name="footer_twitter_title" value="From Twitter" /></td>
+    </tr>
+    <tr>
+      <th><label for="twitter_account">Twitter username:</label></th>
+      <td>
+        <input type="text" id="twitter_account" name="twitter_account" value="shopify" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_display_newsletter">Display newsletter?</label></th>
+      <td><input type="checkbox" id="footer_display_newsletter" name="footer_display_newsletter" value="" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_newsletter_title">Newsletter title:</label></th>
+      <td><input type="text" id="footer_newsletter_title" name="footer_newsletter_title" value="Newsletter" /></td>
+    </tr>
+    <tr>
+      <th><label for="mailing_list_form_action">Mailchimp form action URL</label></th>
+      <td><input type="text" id="mailing_list_form_action" name="mailing_list_form_action" value="" /></td>
+    </tr>
+    <tr>
+      <th><label for="newsletter_btn_color">Newsletter button color</label></th>
+      <td><input id="newsletter_btn_color" name="newsletter_btn_color" class="color" value="#f45b4f" /></td>
+    </tr>
+    <tr>
+      <th><label for="newsletter_btn_hover_color">Newsleter button hover color</label></th>
+      <td><input id="newsletter_btn_hover_color" name="newsletter_btn_hover_color" class="color" value="#ee4d41" /></td>
+    </tr>
+    <tr>
+      <th><label for="newsletter_btn_text_color">Newsletter button text color</label></th>
+      <td><input id="newsletter_btn_text_color" name="newsletter_btn_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="newsleter_btn_hover_text_color">Newsletter button text color</label></th>
+      <td><input id="newsleter_btn_hover_text_color" name="newsleter_btn_hover_text_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="enable_social_links">Display social links?</label></th>
+      <td><input type="checkbox" id="enable_social_links" name="enable_social_links" /></td>
+    </tr>
+    <tr>
+      <th><label for="social_icons">Social icons color:</label></th>
+      <td>
+        <input type="radio" name="social_icons" value="light" selected="selected" /> Light
+        <input type="radio" name="social_icons" value="dark" /> Dark
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_social_title">Social links title:</label></th>
+      <td><input type="text" id="footer_social_title" name="footer_social_title" value="Follow us" /></td>
+    </tr>
+    <tr>
+      <th><label for="twitter_link">Twitter Link</label></th>
+      <td>
+        <input type="text" id="twitter_link" name="twitter_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="twitter_link">Facebook Link</label></th>
+      <td>
+        <input type="text" id="facebook_link" name="facebook_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="insta_link">Instagram Link</label></th>
+      <td>
+        <input type="text" id="insta_link" name="insta_link" value="" />
+      </td>
+    </tr>
+     <tr>
+      <th><label for="twitter_link">Tumblr</label></th>
+      <td>
+        <input type="text" id="tumblr_link" name="tumblr_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="pinterest_link">Pinterest Link</label></th>
+      <td>
+        <input type="text" id="pinterest_link" name="pinterest_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="youtube_link">Youtube Link</label></th>
+      <td>
+        <input type="text" id="youtube_link" name="youtube_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="designed_by">Display 'Designed by'?</label></th>
+      <td>
+        <input type="checkbox" id="designed_by" name="designed_by" value="1" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Home Page</legend>
+  <table>
+    <tr>
+      <td colspan="2">
+        <h3>Homepage Content</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="frontpage_collection">Collection of Products</label></th>
+      <td><select name="frontpage_collection" class="collection" /></td>
+    </tr>
+    <tr>
+      <th><label for="homepage">Additional home page content?</label></th>
+      <td><select class="page" name="homepage" id="homepage" /></td>
+    </tr>
+    
+
+<tr>
+      <td colspan="2">
+        <br/>
+        <h4><b>Main banner</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="frontmain-img">Main banner <b> - must be .JPG format</b></label></th>
+    </tr>
+    <tr>    
+      <td>
+        <input type="file" id="frontmain-img" class="frontmain-img" name="frontmain-img.png" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="frontmain">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="frontmain" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="frontmain-link">URL for image 1 click</label></th>
+      <td>
+        <input type="text" id="frontmain-link" name="front1-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="frontmain-text">Alt text for image 1</label></th>
+      <td>
+        <input type="text" id="frontmain-text" name="frontmain-text" value="" />
+      </td>
+    </tr>
+
+<tr><td>&nbsp;</td></tr>
+
+    <tr>
+      <td colspan="2">
+        <br/>
+        <h4><b>Image 1</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front1-img">Image 1 <b> - must be .JPG format</b></label></th>
+    </tr>
+    <tr>    
+      <td>
+        <input type="file" id="front1-img" class="front1-img" name="front1-img.jpg" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="front1">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="front1" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front1-link">URL for image 1 click</label></th>
+      <td>
+        <input type="text" id="front1-link" name="front1-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front1-text">Alt text for image 1</label></th>
+      <td>
+        <input type="text" id="front1-text" name="front1-text" value="" />
+      </td>
+    </tr>
+
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <td colspan="2">
+        <br/>
+        <h4><b>Image 2</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front2-img">Image 2 <b> - must be .GIF format</b></label></th>
+    </tr>
+    <tr>    
+      <td>
+        <input type="file" id="front2-img" class="front2-img" name="front2-img.jpg" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="front2">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="front2" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front2-link">URL for main banner click</label></th>
+      <td>
+        <input type="text" id="front2-link" name="front2-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front2-text">Alt text for main banner</label></th>
+      <td>
+        <input type="text" id="front2-text" name="front2-text" value="" />
+      </td>
+    </tr>
+
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <th><label for="front3-img">Image 3 <b> - must be .JPG format</b></label></th>
+    </tr>
+    <tr>    
+      <td>
+        <input type="file" id="front3-img" class="front3-img" name="front3-img.jpg" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="front3">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="front3" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front3-link">URL for main banner click</label></th>
+      <td>
+        <input type="text" id="front3-link" name="front3-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front3-text">Alt text for main banner</label></th>
+      <td>
+        <input type="text" id="front3-text" name="front3-text" value="" />
+      </td>
+    </tr>
+
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <td colspan="2">
+        <br/>
+        <h4><b>Image 4</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front4-img">Image 4 <b> - must be .GIF format</b></label></th>
+    </tr>
+    <tr>    
+      <td>
+        <input type="file" id="front4-img" class="front4-img" name="front4-img.jpg" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="front4">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="front4" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front4-link">URL for main banner click</label></th>
+      <td>
+        <input type="text" id="front4-link" name="front4-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front4-text">Alt text for main banner</label></th>
+      <td>
+        <input type="text" id="front4-text" name="front4-text" value="" />
+      </td>
+    </tr>
+
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <td colspan="2">
+        <br/>
+        <h4><b>Image 5</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front5-img">Image 5 <b> - must be .JPG format</b></label></th>
+    </tr>
+    <tr>    
+      <td>
+        <input type="file" id="front5-img" class="front5-img" name="front5-img.jpg" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="front5">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="front5" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front5-link">URL for main banner click</label></th>
+      <td>
+        <input type="text" id="front5-link" name="front5-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="front5-text">Alt text for main banner</label></th>
+      <td>
+        <input type="text" id="front5-text" name="front5-text" value="" />
+      </td>
+    </tr>
+
+      <tr>
+      <td colspan="2">
+        <h3>TOP banner</h3>
+        
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_topoffer">Display topoffer?</label></th>
+      <td>
+        <input type="checkbox" id="display_topoffer" name="display_topoffer" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="topoffer">topoffer  (966 pixels wide)</label></th>
+      <td>
+        <input type="file" id="topoffer" name="topoffer.png" data-max-width="966"/>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="topoffer_link">URL for topoffer click</label></th>
+      <td>
+        <input type="text" id="topoffer_link" name="topoffer_link" value="" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Product Page</legend>
+  <table>
+    <tr>
+      <th><label for="enable_product_image_zoom">Enable image zoom feature?</label></th>
+      <td><input type="checkbox" id="enable_product_image_zoom" name="enable_product_image_zoom" value="0" /></td>
+    </tr>
+    <tr>
+      <th><label for="display_quantity_dropdown">Display Quantity Dropdown?</label></th>
+      <td>
+        <input type="checkbox" id="display_quantity_dropdown" name="display_quantity_dropdown" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_social">Display social/share buttons?</label></th>
+      <td>
+        <input type="checkbox" id="show_social" name="show_social" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_related_products">Display related products?</label></th>
+      <td><input type="checkbox" id="show_related_products" name="show_related_products" value="1" /></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Collection View</legend>
+  <table>
+    <tr>
+      <th><label for="collection_tags">Display browse by product tags?</label></th>
+      <td>
+        <input type="checkbox" id="collection_tags" name="collection_tags" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="pagination_limit">Number of products to display</label></th>
+      <td>
+        <select name="pagination_limit" id="pagination_limit">
+          <option value="60">60</option>
+          <option value="48">48</option>
+          <option value="36">36</option>
+          <option value="24" selected="selected">24</option>
+          <option value="12">12</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="6">6</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_photo_border">Show border around photos?</label></th>
+      <td>
+        <input type="checkbox" id="show_photo_border" name="show_photo_border" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="product_photo_border_color">Photo border color</label></th>
+      <td>
+        <input id="product_photo_border_color" name="product_photo_border_color" class="color" value="#dddddd" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="products_per_row">How many products per row?</label></th>
+      <td>
+        <select name="products_per_row" id="products_per_row">
+          <option value="4" selected="selected">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="product_opacity_hover">Opacity of product on hover?</label></th>
+      <td>
+        <select name="product_opacity_hover" id="product_opacity_hover">
+          <option value="1.0">100%</option>
+          <option value="0.9">90%</option>
+          <option value="0.8">80%</option>
+          <option value="0.7" selected="selected">70%</option>
+          <option value="0.6">60%</option>
+          <option value="0.5">50%</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="show_sale_circle">Show sale circle on products?</label></th>
+      <td>
+        <input type="checkbox" id="show_sale_circle" name="show_sale_circle" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="sale_bg_color">Sale circle background color</label></th>
+      <td>
+        <input id="sale_bg_color" name="sale_bg_color" class="color" value="#000000" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="sale_text_color">Sale circle text color</label></th>
+      <td>
+        <input id="sale_text_color" name="sale_text_color" class="color" value="#ffffff" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="product_vendor">Display Product Vendor?</label></th>
+      <td>
+        <input type="checkbox" id="product_vendor" name="product_vendor" value="1" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Blog Page</legend>
+  <table>
+    <tr>
+      <th><label for="display_blog_tags">Display blog tags?</label></th>
+      <td>
+        <input type="checkbox" id="display_blog_tags" name="display_blog_tags" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_tag_background_color">Tag background color</label></th>
+      <td>
+        <input id="blog_tag_background_color" name="blog_tag_background_color" class="color" value="#ECECEC" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_tag_background_hover_color">Tag background hover color</label></th>
+      <td>
+        <input id="blog_tag_background_hover_color" name="blog_tag_background_hover_color" class="color" value="#CCCCCC" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_tag_font_color">Tag font color</label></th>
+      <td>
+        <input id="blog_tag_font_color" name="blog_tag_font_color" class="color" value="#666666" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_tag_font_hover_color">Tag font hover color</label></th>
+      <td>
+        <input id="blog_tag_font_hover_color" name="blog_tag_font_hover_color" class="color" value="#333333" />
+      </td>
+    </tr>
+   
+    <tr>
+      <td colspan="2">
+        <h3><b>Blog Feature Tiles - image 1</b></h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_feature_1">Blog Feature Tiles - image 1 (310px x 310px)</label></th>
+      <td>
+        <input type="file" id="blog_feature_1" class="blog_feature" name="blog_feature_1.png" data-max-width="410"/>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_feature_1_title">TITLE TEXT for image 1</label></th>
+      <td>
+        <input type="text" id="blog_feature_1_title" name="blog_feature_1_title" value="" />
+      </td>
+    </tr>       
+    
+    <tr>
+      <th><label for="blog_feature_1_link">URL for image 1 click</label></th>
+      <td>
+        <input type="text" id="blog_feature_1_link" name="blog_feature_1_link" value="" />
+      </td>
+    </tr>
+    
+    <tr>
+      <th><label for="gif_blog_feature_1">Animated GIF for image 1 (310px x 310px)</label></th>
+       <td>
+        <input type="checkbox" id="gif_blog_feature_1" name="gif_blog_feature_1" value="0" />
+      </td>
+      </tr>
+      <tr>
+      <th></th>
+      <td>
+        <input type="file" id="gif_blog_feature_1" name="gif_blog_feature_1.gif" data-max-width="410"/>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="gif_blog_feature_1_link">URL for image 1 gif click</label></th>
+      <td>
+        <input type="text" id="gif_blog_feature_1_link" name="gif_blog_feature_1_link" value="" />
+      </td>
+    </tr>
+
+     <tr>
+      <td colspan="2">
+        <h3><b>Blog Feature Tiles - image 2</b></h3>
+        
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_feature_1">Feature Tiles image 2 (310px x 310px)</label></th>
+      <td>
+        <input type="file" id="blog_feature_2" class="blog_feature" name="blog_feature_2.png" data-max-width="410"/>
+      </td>
+    </tr>
+    
+    <tr>
+      <th><label for="blog_feature_2_title">TITLE TEXT for image 2</label></th>
+      <td>
+        <input type="text" id="blog_feature_2_title" name="blog_feature_2_title" value="" />
+      </td>
+    </tr>        
+    
+    <tr>
+      <th><label for="blog_feature_2_link">URL for image 2 click</label></th>
+      <td>
+        <input type="text" id="blog_feature_2_link" name="blog_feature_2_link" value="" />
+      </td>
+    </tr>
+    
+    <tr>
+      <th><label for="gif_blog_feature_2">Animated GIF for image 2 (310px x 310px)</label></th>
+       <td>
+        <input type="checkbox" id="gif_blog_feature_2" name="gif_blog_feature_2" value="0" />
+      </td>
+      </tr>
+      <tr>
+      <th></th>
+      <td>
+        <input type="file" id="gif_blog_feature_2" name="gif_blog_feature_2.gif" data-max-width="410"/>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="gif_blog_feature_2_link">URL for image 2 gif click</label></th>
+      <td>
+        <input type="text" id="gif_blog_feature_2_link" name="gif_blog_feature_2_link" value="" />
+      </td>
+    </tr>
+     <tr>
+      <td colspan="2">
+        <h3><b>Blog Feature Tiles - image 3</b></h3>
+        
+      </td>
+    </tr>
+    <tr>
+      <th><label for="blog_feature_3">Feature Tiles image 3 (310px x 310px)</label></th>
+      <td>
+        <input type="file" id="blog_feature_3" class="mainmidtop" name="blog_feature_3.png" data-max-width="410"/>
+      </td>
+    </tr>
+    
+    <tr>
+      <th><label for="blog_feature_3_title">TITLE TEXT for image 3</label></th>
+      <td>
+        <input type="text" id="blog_feature_3_title" name="blog_feature_3_title" value="" />
+      </td>
+    </tr>        
+    
+    <tr>
+      <th><label for="blog_feature_3_link">URL for image 3 click</label></th>
+      <td>
+        <input type="text" id="blog_feature_3_link" name="blog_feature_3_link" value="" />
+      </td>
+    </tr>
+    
+    <tr>
+      <th><label for="gif_blog_feature_3">Animated GIF for image 3 (310px x 310px)</label></th>
+       <td>
+        <input type="checkbox" id="gif_blog_feature_3" name="gif_blog_feature_3" value="0" />
+      </td>
+      </tr>
+      <tr>
+      <th></th>
+      <td>
+        <input type="file" id="gif_blog_feature_3" name="gif_blog_feature_3.gif" data-max-width="410"/>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="gif_blog_feature_3_link">URL for image 3 gif click</label></th>
+      <td>
+        <input type="text" id="gif_blog_feature_3_link" name="gif_blog_feature_3_link" value="" />
+      </td>
+    </tr>    
+    
+    <tr>
+      <td colspan="2">
+        <h3>MINI Slideshow</h3>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_1">Display Slideshow Image 1?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_1" name="display_mini_slideshow_1" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_1">Slideshow Image 1 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_1" name="mini_slideshow_1.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_1_link">URL for Image 1 click</label></th>
+      <td>
+        <input type="text" id="mini_image_1_link" name="mini_image_1_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_2">Display Slideshow Image 2?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_2" name="display_mini_slideshow_2" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_2">Slideshow Image 2 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_2" name="mini_slideshow_2.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_2_link">URL for Image 2 click</label></th>
+      <td>
+        <input type="text" id="mini_image_2_link" name="mini_image_2_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_3">Display Slideshow Image 3?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_3" name="display_mini_slideshow_3" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_3">Slideshow Image 3 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_3" name="mini_slideshow_3.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_3_link">URL for Image 3 click</label></th>
+      <td>
+        <input type="text" id="mini_image_3_link" name="mini_image_3_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_4">Display Slideshow Image 4?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_4" name="display_mini_slideshow_4" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_4">Slideshow Image 4 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_4" name="mini_slideshow_4.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_4_link">URL for Image 4 click</label></th>
+      <td>
+        <input type="text" id="mini_image_4_link" name="mini_image_4_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_5">Display Slideshow Image 5?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_5" name="display_mini_slideshow_5" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_5">Slideshow Image 5 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_5" name="mini_slideshow_5.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_5_link">URL for Image 5 click</label></th>
+      <td>
+        <input type="text" id="mini_image_5_link" name="mini_image_5_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_6">Display Slideshow Image 6?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_6" name="display_mini_slideshow_6" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_6">Slideshow Image 6 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_6" name="mini_slideshow_6.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_6_link">URL for Image 6 click</label></th>
+      <td>
+        <input type="text" id="mini_image_6_link" name="mini_image_6_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_7">Display Slideshow Image 7?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_7" name="display_mini_slideshow_7" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_7">Slideshow Image 7 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_7" name="mini_slideshow_7.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_7_link">URL for Image 7 click</label></th>
+      <td>
+        <input type="text" id="mini_image_7_link" name="mini_image_7_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_8">Display Slideshow Image 8?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_8" name="display_mini_slideshow_8" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_8">Slideshow Image 8 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_8" name="mini_slideshow_8.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_8_link">URL for Image 8 click</label></th>
+      <td>
+        <input type="text" id="mini_image_8_link" name="mini_image_8_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_9">Display Slideshow Image 9?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_9" name="display_mini_slideshow_9" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_9">Slideshow Image 9 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_9" name="mini_slideshow_9.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_9_link">URL for Image 9 click</label></th>
+      <td>
+        <input type="text" id="mini_image_9_link" name="mini_image_9_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mini_slideshow_10">Display Slideshow Image 10?</label></th>
+      <td>
+        <input type="checkbox" id="display_mini_slideshow_10" name="display_mini_slideshow_10" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_slideshow_10">Slideshow Image 10 (150px x 226px)</label></th>
+      <td>
+        <input type="file" id="mini_slideshow_10" name="mini_slideshow_10.jpg" data-max-width="250" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="mini_image_10_link">URL for Image 10 click</label></th>
+      <td>
+        <input type="text" id="mini_image_10_link" name="mini_image_10_link" value="" />
+      </td>
+    </tr>    
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Cart</legend>
+  <table>
+    <tr>
+       <th><label for="icon_cart">Display cart icon?</label></th>
+       <td>
+         <input type="radio" name="icon_cart" value="none" /> None
+         <input type="radio" name="icon_cart" value="light" selected="selected" /> Light
+         <input type="radio" name="icon_cart" value="dark" /> Dark
+       </td>
+     </tr>
+     <tr>
+       <th><label for="icon_cart_opacity">Cart icon opacity:</label></th>
+       <td>
+         <select name="icon_cart_opacity" id="icon_cart_opacity">
+           <option value="9">90%</option>
+           <option value="8" selected="selected">80%</option>
+           <option value="7">70%</option>
+           <option value="6">60%</option>
+           <option value="5">50%</option>
+           <option value="4">40%</option>
+           <option value="3">30%</option>
+           <option value="2">20%</option>
+           <option value="1">10%</option>
+         </select>
+       </td>
+     </tr>
+    <tr>
+      <th><label for="display_cart_note">Display additional cart note?</label></th>
+      <td>
+        <input type="checkbox" id="display_cart_note" name="display_cart_note" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_extra_checkout_buttons">Display additional checkout buttons?</label></th>
+      <td>
+        <input type="checkbox" id="display_extra_checkout_buttons" name="display_extra_checkout_buttons" value="1"  selected="selected" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>SEO Settings</legend>
+  <p>This section is for advanced users only! You shouldn't edit these fields if you don't know what they do.</p>
+  <table>
+    <tr>
+      <th><label for="title_tags">Append content to page title:</label></th>
+      <td>
+        <input type="text" id="title_tags" name="title_tags" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="meta_keywords">Meta Keywords</label></th>
+      <td>
+        <input type="text" id="meta_keywords" name="meta_keywords" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="meta_author">Meta Author</label></th>
+      <td>
+        <input type="text" id="meta_author" name="meta_author" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="meta_description">Meta Description</label></th>
+      <td>
+        <textarea id="meta_description" name="meta_description"></textarea>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Responsive Design</legend>
+  <table>
+    <tr>
+      <th><label for="display_mq_desktop_slim">Show Desktop Slim version?</label></th>
+      <td>
+        <input type="checkbox" id="display_mq_desktop_slim" name="display_mq_desktop_slim" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mq_tablet">Show Tablet Portrait version?</label></th>
+      <td>
+        <input type="checkbox" id="display_mq_tablet_portrait" name="display_mq_tablet_portrait" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mq_tablet">Show Tablet Landscape version?</label></th>
+      <td>
+        <input type="checkbox" id="display_mq_tablet" name="display_mq_tablet" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mq_mobile_landscape">Show Mobile Landscape version?</label></th>
+      <td>
+        <input type="checkbox" id="display_mq_mobile_landscape" name="display_mq_mobile_landscape" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="display_mq_mobile_portrait">Show Mobile Portrait version?</label></th>
+      <td>
+        <input type="checkbox" id="display_mq_mobile_portrait" name="display_mq_mobile_portrait" value="0" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+
+
+<fieldset>
+  <legend>Shipping Promo Box</legend>
+  <table>
+
+<tr><td>&nbsp;</td></tr>
+    <tr>
+      <td colspan="2">
+        <br/>
+        <h4><b>Shipping promo</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="shippingpromo1_text">Shipping Promo title</label></th>
+      <td>
+        <input type="text" id="shippingpromo1_text" name="shippingpromo1_text" value="" />
+      </td>
+    </tr>
+     <tr>
+      <th>
+        <label for="shippingpromo1">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="shippingpromo1" value="1" />
+      </td>
+    </tr>
+<tr><td>&nbsp;</td></tr>
+    <tr>
+      <th><label for="shippingpromo2_text">Shipping Promo first line</label></th>
+      <td>
+        <input type="text" id="shippingpromo2_text" name="shippingpromo2_text" value="" />
+      </td>
+    </tr>
+     <tr>
+      <th>
+        <label for="shippingpromo2">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="shippingpromo2" value="1" />
+      </td>
+    </tr>
+<tr><td>&nbsp;</td></tr>
+    <tr>
+      <th><label for="shippingpromo3_text">Shipping Promo second line</label></th>
+      <td>
+        <input type="text" id="shippingpromo3_text" name="shippingpromo3_text" value="" />
+      </td>
+    </tr>
+     <tr>
+      <th>
+        <label for="shippingpromo3">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="shippingpromo3" value="1" />
+      </td>
+    </tr>
+<tr><td>&nbsp;</td></tr>
+     <tr>
+      <th><label for="shippingpromo4_text">Shipping Promo third line</label></th>
+      <td>
+        <input type="text" id="shippingpromo4_text" name="shippingpromo4_text" value="" />
+      </td>
+    </tr>
+     <tr>
+      <th>
+        <label for="shippingpromo4">Show?</label>
+      </th>      
+      <td>
+        <input type="checkbox" name="shippingpromo4" value="1" />
+      </td>
+    </tr>
+
+  </table>
+</fieldset>

@@ -1,0 +1,48 @@
+<!-- Begin slider -->
+<div class="flexslider-container">
+  <div class="flexslider">
+    <ul class="slides">
+
+
+        {% if settings.display_slideshow_1 %}
+        <li><a href="{{ settings.image_1_link }}"><img src="{{ 'slideshow_1.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+
+
+      {% if settings.display_slideshow_video %}
+        <li><iframe width="1920" height="700" style="max-width: 100%;" src="{{ settings.slideshow_video }}" frameborder='0' allowfullscreen></iframe>
+        </li>
+      {% endif %}
+    
+      {% if settings.display_slideshow_2 %}
+        <li><a href="{{ settings.image_2_link }}"><img src="{{ 'slideshow_2.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_3 %}
+        <li><a href="{{ settings.image_3_link }}"><img src="{{ 'slideshow_3.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_4 %}
+      	<li><a href="{{ settings.image_4_link }}"><img src="{{ 'slideshow_4.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_5 %}
+      	<li><a href="{{ settings.image_5_link }}"><img src="{{ 'slideshow_5.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_6 %}
+      	<li><a href="{{ settings.image_6_link }}"><img src="{{ 'slideshow_6.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_7 %}
+      	<li><a href="{{ settings.image_7_link }}"><img src="{{ 'slideshow_7.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_8 %}
+      	<li><a href="{{ settings.image_8_link }}"><img src="{{ 'slideshow_8.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_9 %}
+      	<li><a href="{{ settings.image_9_link }}"><img src="{{ 'slideshow_9.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+      {% if settings.display_slideshow_10 %}
+      	<li><a href="{{ settings.image_10_link }}"><img src="{{ 'slideshow_10.jpg' | asset_url }}" /></a></li>
+      {% endif %}
+    </ul>
+    <div class="flex-controls"></div>
+  </div>
+</div>
+<!-- End slider -->

@@ -1,0 +1,43 @@
+{% capture collection_handle %}{{ related-product-loop | handleize }}{% endcapture %}
+{% capture url %}{% if collection_handle != "" %}/collections/{{ related-product-loop }}{{ product.url }}{% else %}{{ product.url }}{% endif %}{% endcapture %}
+<div class="product span3">
+  
+  {% if product.price_min < product.compare_at_price_min %}
+    {% if settings.show_sale_circle %}
+    <span class="circle sale">Sale</span>
+    {% endif %}
+  {% endif %}
+  
+  <div class="image">
+    <a href="{{ url }}">
+      <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" />
+    </a>
+  </div>
+  
+  <div class="details">
+    <a href="{{ url }}" class="clearfix">
+      <h4 class="title">{{ product.title }}</h4>
+      {% if settings.product_vendor %}
+      <span class="vendor">{{ product.vendor }}</span>
+      {% endif %}
+      
+      <span class="price">
+      {% if product.available %}
+        {% if product.price_varies %}
+          {% if product.compare_at_price_max > product.price %}
+            <del>{{ product.compare_at_price_min | money }}</del>
+          {% endif %}
+        <small><em>from</em></small>
+        {% endif %}
+        {{ product.price_min | money }}
+        {% else %}
+        {{ product.price_min | money }} Sold Out
+      {% endif %}
+      </span>
+      
+    </a>
+  </div>
+  
+</div>
+<!-- .mobile_portrait_fix div is used to fix the 2 column layout on the mobile portrait display  -->
+{% cycle 'clear-product-loop': '', '<div class="mobile_portrait_fix" style="clear:both;"></div>', '', '<div style="clear:both;"></div>' %}

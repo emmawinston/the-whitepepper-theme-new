@@ -1,0 +1,9 @@
+{% paginate search.results by 15 %}
+<div class="row" align="right">
+  <div class="span12">
+    <div id="pagination">
+    {{ paginate | default_pagination }}
+    </div>
+  </div>
+</div>
+{% endpaginate %}

@@ -1,0 +1,68 @@
+<div id="page" class="row">
+  
+  <div class="span12 details">
+    {{ page.content }}
+
+<div class="naughtynicewrapper" id="tiles">
+
+   	<div class="brick largebrick">
+			{% if settings.naughtylarge %}
+				<a href="{{ settings.naughtylarge_link }}" ><img src="{{ 'naughtylarge.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtylarge_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+		<div class="brick medbrick">
+			{% if settings.naughtymed1 %}
+				<a href="{{ settings.naughtymed1_link }}" ><img src="{{ 'naughtymed1.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtymed1_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+<div class="brick smallbrick">
+			{% if settings.naughtysmall1 %}
+				<a href="{{ settings.naughtysmall1_link }}" ><img src="{{ 'naughtysmall1.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtysmall1_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick smallbrick">
+			{% if settings.naughtysmall2 %}
+				<a href="{{ settings.naughtysmall2_link }}" ><img src="{{ 'naughtysmall2.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtysmall2_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick smallbrick">
+			{% if settings.naughtysmall3 %}
+				<a href="{{ settings.naughtysmall3_link }}" ><img src="{{ 'naughtysmall3.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtysmall3_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick tinybrick">
+			{% if settings.naughtytiny1 %}
+				<a href="{{ settings.naughtytiny1_link }}" ><img src="{{ 'naughtytiny1.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtytiny1_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick medbrick">
+			{% if settings.naughtymed2 %}
+				<a href="{{ settings.naughtymed2_link }}" ><img src="{{ 'naughtymed2.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtymed2_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+		<div class="brick medbrick">
+			{% if settings.naughtymed3 %}
+				<a href="{{ settings.naughtymed3_link }}" ><img src="{{ 'naughtymed3.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtymed3_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+<div class="brick smallbrick">
+			{% if settings.naughtysmall4 %}
+				<a href="{{ settings.naughtysmall4_link }}" ><img src="{{ 'naughtysmall4.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtysmall4_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick tinybrick">
+			{% if settings.naughtytiny2 %}
+				<a href="{{ settings.naughtytiny2_link }}" ><img src="{{ 'naughtytiny2.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.naughtytiny2_linktext }}</span></div--></a>
+			{% endif %}
+  </div>
+</div>
+</div>

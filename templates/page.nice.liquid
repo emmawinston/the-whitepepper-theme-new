@@ -1,0 +1,68 @@
+<div id="page" class="row">
+  
+  <div class="span12 details">
+    {{ page.content }}
+
+<div class="naughtynicewrapper" id="tiles">
+
+   	<div class="brick largebrick">
+			{% if settings.nicelarge %}
+				<a href="{{ settings.nicelarge_link }}" ><img src="{{ 'nicelarge.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicelarge_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+		<div class="brick medbrick">
+			{% if settings.nicemed1 %}
+				<a href="{{ settings.nicemed1_link }}" ><img src="{{ 'nicemed1.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicemed1_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+<div class="brick smallbrick">
+			{% if settings.nicesmall1 %}
+				<a href="{{ settings.nicesmall1_link }}" ><img src="{{ 'nicesmall1.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicesmall1_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick smallbrick">
+			{% if settings.nicesmall2 %}
+				<a href="{{ settings.nicesmall2_link }}" ><img src="{{ 'nicesmall2.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicesmall2_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick smallbrick">
+			{% if settings.nicesmall3 %}
+				<a href="{{ settings.nicesmall3_link }}" ><img src="{{ 'nicesmall3.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicesmall3_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick tinybrick">
+			{% if settings.nicetiny1 %}
+				<a href="{{ settings.nicetiny1_link }}" ><img src="{{ 'nicetiny1.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicetiny1_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick medbrick">
+			{% if settings.nicemed2 %}
+				<a href="{{ settings.nicemed2_link }}" ><img src="{{ 'nicemed2.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicemed2_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+		<div class="brick medbrick">
+			{% if settings.nicemed3 %}
+				<a href="{{ settings.nicemed3_link }}" ><img src="{{ 'nicemed3.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicemed3_linktext }}</span></div--></a>
+			{% endif %}
+		</div>
+
+<div class="brick smallbrick">
+			{% if settings.nicesmall4 %}
+				<a href="{{ settings.nicesmall4_link }}" ><img src="{{ 'nicesmall4.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicesmall4_linktext }}</span></div--></a>
+			{% endif %}
+</div>
+
+<div class="brick tinybrick">
+			{% if settings.nicetiny2 %}
+				<a href="{{ settings.nicetiny2_link }}" ><img src="{{ 'nicetiny2.png' | asset_url }}" /><!--div class="bricktext"><span>{{ settings.nicetiny2_linktext }}</span></div--></a>
+			{% endif %}
+  </div>
+</div>
+</div>

@@ -1,0 +1,58 @@
+<div id="page" class="row">
+  
+  <div class="span12 details">
+    <h1 class="p25">{{ page.title }}</h1>
+    <p>We are here to help Monday to Friday, 10am - 6pm. <br> We aim to ensure all queries receive a response within one working day.</p>
+    {% form 'contact' %}
+
+{% if form.posted_successfully? %}
+<div class="successForm feedback">
+  <p>Thanks for contacting us! We'll get back to you as soon as possible.</p>
+</div>
+{% endif %}
+
+{% if form.errors %}
+<div class="errorForm feedback">
+  <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+  <p>Oops, sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
+  {% for field in form.errors %}
+    <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+  {% endfor %}
+</div>
+{% endif %}
+ 
+<div id="contactFormWrapper">
+  <p>
+    <label>Your Name:</label><br/>
+    <input type="text" id="contactFormName" name="contact[name]" placeholder="" />
+  </p>
+  <p>
+    <label>Email:</label><br/>
+    <input type="email" id="contactFormEmail" name="contact[email]" placeholder="" />
+  </p>
+  <p>
+    <label>Order Number:</label><br/>
+    <input type="order" id="contactFormOrder" name="contact[order]" placeholder="" />
+  </p> 
+  <p>
+    <label>Message:</label><br/>
+    <textarea rows="15" cols="75" id="contactFormMessage" name="contact[body]" placeholder=""></textarea>
+  </p>
+  <p>
+    <input type="submit" class="btn" id="contactFormSubmit" value="SEND" />
+  </p>        	
+</div><!-- contactWrapper -->
+
+{% endform %}
+
+<style>
+.contact-form {margin:1em 0}
+.feedback {padding:0.5em 0.7em;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px}
+.feedback p {padding:0.5em 0 !important;margin:0 !important}
+.successForm {background:#ffffff}
+.errorForm {background:#EEBDBD;color:red}
+</style>
+{{ page.content }}
+  </div>
+  
+</div>

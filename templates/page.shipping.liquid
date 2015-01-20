@@ -1,0 +1,29 @@
+<div id="page" class="row">
+  
+  <div class="span12 details">
+    <h1 class="p25">{{ page.title }}</h1>
+
+    <div class="delivery_info_1 delivery_info">
+		{% if page.metafields.shipping.title %}<h2 style="text-align: center;"><strong>{{ page.metafields.shipping.title }}</strong></h2>{% endif %}
+		{% if page.metafields.shipping.content_first_line or page.metafields.shipping.content_second_line or page.metafields.shipping.content_third_line %}<p style="text-align: center;">
+		{% if page.metafields.shipping.content_first_line %}
+			{{ page.metafields.shipping.content_first_line }}
+		{% endif %}
+		{% if page.metafields.shipping.content_second_line %}
+			<br />{{ page.metafields.shipping.content_third_line }}
+		{% endif %}
+		{% if page.metafields.shipping.content_second_line %}
+			<br />{{ page.metafields.shipping.content_third_line }}
+		{% endif %}
+		</p>
+		{% endif %}
+		</div>
+
+    
+    
+    {{ page.content }}
+
+</div>
+  </div>
+  
+</div>
