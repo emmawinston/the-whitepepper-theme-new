@@ -99,6 +99,8 @@
 
 {% include 'localization' %}
 
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body id="template_{{ template | handle }}" class="{{ page_title | handle }}">
@@ -350,7 +352,7 @@
       
         
         <!-- Begin footer navigation -->
-        <div class="span4">
+        <div class="span3">
           <h4>{{ settings.footer_linklist_title }}</h4>
           <ul class="unstyled">
             {% for link in linklists[settings.footer_linklist].links %}
@@ -361,7 +363,7 @@
         <!-- End footer navigation -->
         
         <!-- Begin twitter -->
-        <div class="span4">
+        <div class="span3">
           <h4>{{ settings.footer_linklist_title2 }}</h4>
           <ul class="unstyled">
             {% for link in linklists[settings.footer_linklist2].links %}
@@ -370,9 +372,15 @@
           </ul>
         </div>
         <!-- End twitter -->
+
+        <!-- Begin twitter -->
+        <div class="span2">
+          <img src="https://ci3.googleusercontent.com/proxy/cfaxK1xGiuyFpKhAXVxAnAT0652k7MAcGsuDsv8Pxb26iKLSfWdBJjWjx_kEdh3RNiVt_KsN=s0-d-e1-ft#http://i.imgbox.com/c2xOpY33.gif">
+        </div>
+        <!-- End twitter -->
         
         <!-- Begin newsletter/social -->
-        <div class="span4">
+        <div class="span3 footersocial">
           
           {% if settings.footer_display_newsletter %}
           <div class="p30">
@@ -415,10 +423,7 @@
 </div>
           </div>
      
-         
-         
-          <img src="http://cdn.shopify.com/s/files/1/0156/6472/files/paypal_logos5.png?7144">
-          <br>
+        
 
           </div>
           </div>
@@ -429,6 +434,8 @@
         
         <!-- Begin copyright -->
         <div class="span12 tc copyright">
+          <img src="http://cdn.shopify.com/s/files/1/0156/6472/files/paypal_logos5.png?7144">
+          <br>
           <p>Copyright &copy; {{ 'now' | date: "%Y" }} {{ shop.name }} LTD   <br/>Company Registration No: 08034033 </p>
         </div>
         <!-- End copyright -->
