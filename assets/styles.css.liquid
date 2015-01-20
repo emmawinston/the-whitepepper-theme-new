@@ -734,22 +734,18 @@ div.errors { margin-bottom: 15px; }
   margin-bottom: 8px; */
 }
 
-@media screen and (min-width: 1920px) {
-    #largewrapper {
-        max-width: 1920px;
+ #largewrapper {
+        max-width: 1720px !important; 
         margin: 0 auto;
-    }
-
-    img {
-        max-width: auto !important;
-    }
 }
 
+#largewrapper .product img, #largewrapper .product .image a {
+   width: 100%;
+}
 
 /* =================== */
 /*      SECTION 4      */
 /* =================== */
-
 
 /* 4.1 - Desktop Slim */
 {% if settings.display_mq_desktop_slim %}
@@ -1071,9 +1067,10 @@ div.errors { margin-bottom: 15px; }
 #instafeed a.instalink:first-child {
 	width: 100%;
 	padding-bottom: 100%;
-}
+    }
 }
 {% endif %}
+
 
 
 /* =================== */
