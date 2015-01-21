@@ -1,14 +1,12 @@
 jQuery(window).load(function(){
   
-  {% if settings.display_slideshow %}
+  {% if settings.slide1 %}
   $('.flexslider')
-  .fitVids()
   .flexslider({
-    animation: "slide",
     slideshow: true,
     animationDuration: 700,
-    slideshowSpeed: {{ settings.slideshow_speed }},
-    animation: "{{ settings.slideshow_transition }}",
+    slideshowSpeed: 7000,
+    animation: "slide",
     controlsContainer: ".flex-controls",
     controlNav: false,
     keyboardNav: true

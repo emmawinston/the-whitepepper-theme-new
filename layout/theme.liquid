@@ -304,13 +304,86 @@
   <!-- Begin wrapper -->
   {% if template == "index" %}
 
+
   <div class="row" id="feature_1">
+    {% if settings.frontmain %}
     <div class="full first">
-      <a href="{{ settings.frontmain-link }}">
-        <img src="{{'frontmain-img.png' | asset_url }}" alt="{{ settings.frontmain-text }}" />
-      </a>
-    </div>  
-  </div> <!-- #feature_section_1 -->
+          <a href="{{ settings.frontmain-link }}">
+            <img src="{{'frontmain-img.gif' | asset_url }}" alt="{{ settings.frontmain-text }}" />
+          </a>
+    </div>
+    {% endif %}
+
+    {% if settings.slide1 %}
+    <div class="full first flexslider flexslider-front ">
+      <ul class="slides">
+        {% if settings.slide1 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide1-link }}">
+            <img src="{{'slide1-img.jpg' | asset_url }}" alt="{{ settings.slide1-text }}" />
+          </a>
+        </li>
+        {% endif %}
+
+        {% if settings.slide2 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide2-link }}">
+            <img src="{{'slide2-img.jpg' | asset_url }}" alt="{{ settings.slide2-text }}" />
+          </a>
+        </li>
+        {% endif %}
+
+        {% if settings.slide3 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide3-link }}">
+            <img src="{{'slide3-img.jpg' | asset_url }}" alt="{{ settings.slide3-text }}" />
+          </a>
+        </li>
+        {% endif %}
+
+        {% if settings.slide4 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide4-link }}">
+            <img src="{{'slide4-img.jpg' | asset_url }}" alt="{{ settings.slide4-text }}" />
+          </a>
+        </li>
+        {% endif %}
+
+        {% if settings.slide5 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide5-link }}">
+            <img src="{{'slide5-img.jpg' | asset_url }}" alt="{{ settings.slide5-text }}" />
+          </a>
+        </li>
+        {% endif %}
+
+        {% if settings.slide6 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide6-link }}">
+            <img src="{{'slide6-img.jpg' | asset_url }}" alt="{{ settings.slide6-text }}" />
+          </a>
+        </li>
+        {% endif %}
+
+        {% if settings.slide7 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide7-link }}">
+            <img src="{{'slide7-img.jpg' | asset_url }}" alt="{{ settings.slide7-text }}" />
+          </a>
+        </li>
+        {% endif %}
+
+        {% if settings.slide8 %}
+        <li class="collection-slide">
+          <a href="{{ settings.slide8-link }}">
+            <img src="{{'slide8-img.jpg' | asset_url }}" alt="{{ settings.slide8-text }}" />
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>  <!-- #feature_section_1 -->
 
   {% endif %}
 
@@ -392,25 +465,30 @@
         
 <div>
           
-<div class="clearfix">
+<div class="clearfix social-wrapper">
           {% if settings.enable_social_links %}
             <h4>{{ settings.footer_social_title }}</h4>
+            <div id="social1">
             {% if settings.twitter_link != '' %}<a href="{{ settings.twitter_link }}"target="_blank" title="{{ shop.name }} on Twitter" class="icon-social twitter">Twitter</a>{% endif %}
             {% if settings.facebook_link != '' %}<a href="{{ settings.facebook_link }}"target="_blank" " title="{{ shop.name }} on Facebook" class="icon-social facebook">Facebook</a>{% endif %}
-            {% if settings.tumblr_link != '' %}<a href="{{ settings.tumblr_link }}"target="_blank" " title="{{ shop.name }} on Tumblr" class="icon-social tumblr">Tumblr</a>{% endif %}        
+            {% if settings.tumblr_link != '' %}<a href="{{ settings.tumblr_link }}"target="_blank" " title="{{ shop.name }} on Tumblr" class="icon-social tumblr">Tumblr</a>{% endif %}  
             {% if settings.pinterest_link != '' %}<a href="{{ settings.pinterest_link }}"target="_blank" title="{{ shop.name }} on Pinterest" class="icon-social pinterest">Pinterest</a>
+          </div>
             {% endif %}
+
+           <div id="social2"> 
             {% if settings.insta_link != '' %}<a href="{{ settings.insta_link }}" target="_blank" title="{{ shop.name }} on Instagram" class="icon-social insta">Instagram</a>{% endif %}
             {% if settings.youtube_link != '' %}<a href="{{ settings.youtube_link }}" target="_blank" title="{{ shop.name }} on YouTube" class="icon-social youtube">YouTube</a>{% endif %}
             <a href="https://plus.google.com/101099091637248225527/posts" target="_blank" " title="{{ shop.name }} on Google+" class="icon-social google">Google+</a>
-      <a href="http://the-whitepepper.polyvore.com/" target="_blank" " title="{{ shop.name }} on Polyvore" class="icon-social polyvore">Polyvore</a>         
+      <a href="http://the-whitepepper.polyvore.com/" target="_blank" " title="{{ shop.name }} on Polyvore" class="icon-social polyvore">Polyvore</a>  
+      </div>       
 {% endif %}
 
 </div>
 
          <br>
 
-       <div style="float:left; padding-top:0px; padding-bottom:10px;">
+       <div class="signup-footer">
                Keep up to date with our latest collections and offers:
          <div id="mc_embed_signup">
 
