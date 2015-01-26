@@ -32,15 +32,6 @@
 	</div>
 </div> <!-- #feature_3-->
 
-<div class="row promo">
-	<div class="span6 first uoonyou"><img src="{{'uoonyou.png' | asset_url }}"/></div>
-	<div class="span6 last followus"><a href="http://instagram.com/thewhitepepper"><img src="{{'followus.png' | asset_url }}"/></a></div>
-</div>
-
-<div class="row">
-	<div id="instafeed" class="span12"></div>
-</div>
-
 <!--div id="feature_4" class="row">
 		<img src="{{ 'whatwelove-img.jpg' | asset_url }}" alt="{{ settings.whatwelove-text }}" />
 		<div id="carousel">
@@ -100,17 +91,27 @@
 {% endif %} -->
 <!-- End intro -->
 
-
-<!-- Begin homepage products -->
-<!--div class="stylists_pick">
-  <h2>Stylist's Pick</h2>
-  <div class="arrow"></div>
-</div--><!-- stylists_pick --> 
-
+<div class="row">
+<div class="stylists-title span12">
+	<img src="{{'stylistpick.png' | asset_url }}">
+</div>
       
-<!--div class="products">
-  {% for product in collections[settings.frontpage_collection].products %}
+<div class="products">
+  {% for product in collections[settings.frontpage_collection].products limit:4 %}
   {% include 'product-loop' with settings.frontpage_collection %}
   {% endfor %}
-</div-->
+</div>
+</div>
 <!-- End products -->
+
+
+<div class="row promo">
+
+<div class="insta-title span12">
+	<a href="http://instagram.com/thewhitepepper">
+		<img src="{{'hashtagtwp.png' | asset_url }}">
+	</a>
+</div>
+
+<div id="instafeed" class="instafeed span12"></div>
+

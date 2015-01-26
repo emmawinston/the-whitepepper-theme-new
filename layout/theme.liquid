@@ -21,12 +21,14 @@
   {% endif %}
 
 
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.15/slick.min.js"></script>
+
+
   {% if template == "nice.page" or "naughty.page" %}
   {{ 'jquery.packery.js' | asset_url | script_tag }}
   {% endif %}
 
   {{ 'jquery.scrollstop.js' | asset_url | script_tag }}
-  {{ 'slick.css' | asset_url | stylesheet_tag }}
   
   <!-- this deals with the out of date version of cloud zoom plugin -->
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
@@ -70,6 +72,7 @@
 
   {{ 'styles.css' | asset_url | stylesheet_tag }}
   {{ 'slicknav.css' | asset_url | stylesheet_tag }}
+  {{ 'slick.css' | asset_url | stylesheet_tag }}
   {{ 'jquery.qtip.css' | asset_url | stylesheet_tag }}
   {{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
   {% if settings.google_header_font != "none" %}
@@ -82,7 +85,7 @@
   {% include 'capture' %}
   
   <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-<script src="http://vjs.zencdn.net/c/video.js"></script>
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
   <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -151,6 +154,7 @@
   
 <a href="/" id="small_logo"><img src="{{ 'logo_small.png' | asset_url }}" alt="{{ shop.name }}" /></a>
 
+<div class="headerwrapper wrapper">
   <div id="header">
     <!-- Begin toolbar -->
     <div class="toolbar-wrapper">
@@ -300,6 +304,7 @@
     <!-- End below navigation -->
 
   </div> <!-- #header -->  
+</div><!-- .headerwrapper -->
 
   <!-- Begin wrapper -->
   {% if template == "index" %}
@@ -315,72 +320,72 @@
     {% endif %}
 
     {% if settings.slide1 %}
-    <div class="full first flexslider flexslider-front ">
-      <ul class="slides">
+    <div class="full first">
+      <div id="slickslides">
         {% if settings.slide1 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide1-link }}">
             <img src="{{'slide1-img.jpg' | asset_url }}" alt="{{ settings.slide1-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
 
         {% if settings.slide2 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide2-link }}">
             <img src="{{'slide2-img.jpg' | asset_url }}" alt="{{ settings.slide2-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
 
         {% if settings.slide3 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide3-link }}">
             <img src="{{'slide3-img.jpg' | asset_url }}" alt="{{ settings.slide3-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
 
         {% if settings.slide4 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide4-link }}">
             <img src="{{'slide4-img.jpg' | asset_url }}" alt="{{ settings.slide4-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
 
         {% if settings.slide5 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide5-link }}">
             <img src="{{'slide5-img.jpg' | asset_url }}" alt="{{ settings.slide5-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
 
         {% if settings.slide6 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide6-link }}">
             <img src="{{'slide6-img.jpg' | asset_url }}" alt="{{ settings.slide6-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
 
         {% if settings.slide7 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide7-link }}">
             <img src="{{'slide7-img.jpg' | asset_url }}" alt="{{ settings.slide7-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
 
         {% if settings.slide8 %}
-        <li class="collection-slide">
+        <div class="slickslide">
           <a href="{{ settings.slide8-link }}">
             <img src="{{'slide8-img.jpg' | asset_url }}" alt="{{ settings.slide8-text }}" />
           </a>
-        </li>
+        </div>
         {% endif %}
-      </ul>
+      </div>
     </div>
     {% endif %}
   </div>  <!-- #feature_section_1 -->
@@ -526,10 +531,6 @@
 
 </div>
    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
-  
-
-
-
   {% if template contains 'customers' %}
   {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
   {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
@@ -597,33 +598,40 @@
 jQuery('a[href^="http"]').not('a[href^="{{ shop.url }}"]').attr('target', '_blank');
 </script>
 
-{% if template == "nice.page" or "naughty.page" %}
-  <script>
-// initialize Isotope
-var $container = $('#tiles');
-// init
-$container.packery({
-  itemSelector: '.brick',
-  columnwidth: 320,
-  gutter: 0
+<script type="text/javascript">
+$('#slickslides').slick({
+  dots: false,
+  infinite: true,
+  fade: true,
+  cssEase: 'ease-in-out'
 });
-  </script>
-  {% endif %}
+</script>
 
-
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.15/slick.min.js"></script>
-
-  <script>
-  $(document).ready(function(){
-  $('#carousel').slick({
-    slidesToShow: 5,
-    infinite: true,
-    responsive: [
+{% if template == "index" %}
+{% raw %}
+<script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'user',
+        userId: 178311372,
+        accessToken: '178311372.467ede5.8e5b7f9fc4c14c5d9045474f0ab4c773',
+        template: '<div><a href="{{link}}"><img src="{{image}}" /></a></div>',
+        target: 'instafeed',
+        resolution: 'standard_resolution',
+        after: function() {
+        $('#instafeed').slick({
+            slidesToShow: 6,
+            infinite: true,
+            responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3
+        slidesToShow: 4
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 3
       }
     },
     {
@@ -641,28 +649,14 @@ $container.packery({
       }
     }
   ]
-  });
-});
-  </script>
-
-{% if template == "index" %}
-{% raw %}
-<script type="text/javascript">
-    var feed = new Instafeed({
-        get: 'tagged',
-        tagName: 'thewhitepepper',
-        clientId: '0994fedb1f964aa39704dcc82d50db3b',
-        resolution: 'standard_resolution',
-        limit: 7,
-        template: '<a href="{{link}}" class="instalink" target="_blank"><p><span class="instacaption">{{caption}}</span></p><img src="{{image}}" /></a>'
+        });
+      }
     });
+    
     feed.run();
-</script>
+    </script>
 {% endraw %}
-
 {% endif %}
-
-
 
   </body>
 </html>
